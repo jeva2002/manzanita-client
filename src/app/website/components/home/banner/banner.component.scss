@@ -1,0 +1,53 @@
+main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  left: 0;
+  right: 0;
+  height: fit-content;
+
+  section {
+    width: 100%;
+    position: relative;
+    height: 725px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    button {
+      position: absolute;
+      z-index: 10;
+      width: 300px;
+      height: 400px;
+      font-size: 46px;
+      color: #ffffff;
+      padding: 20px;
+      background-color: transparent;
+      backdrop-filter: blur(2px);
+      border: 5px solid #ffffff;
+    }
+
+    button:hover {
+      cursor: pointer;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+@media (max-width: 650px) {
+  main {
+    grid-template-columns: 1fr;
+
+    section {
+      height: 400px;
+
+      button {
+        font-size: 32px;
+        height: 200px;
+      }
+    }
+  }
+}
