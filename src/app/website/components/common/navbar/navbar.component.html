@@ -1,0 +1,37 @@
+<div class="navbar">
+  <nav class="navbar-extended">
+    <div class="logo">
+      <a href=""><h2>Manzanita</h2></a>
+    </div>
+    <div class="options">
+      <menu>
+        <li><a routerLink="boys" routerLinkActive="active">Niños</a></li>
+        <li><a routerLink="" routerLinkActive="active">Niñas</a></li>
+        <li>
+          <a routerLink="accesories" routerLinkActive="active">Accesorios</a>
+        </li>
+      </menu>
+      <div class="cart">
+        <strong>Haz tu pedido aquí!</strong>
+      </div>
+    </div>
+  </nav>
+  <nav class="navbar-collapse">
+    <div class="bar">
+      <a href=""><h2>Manzanita</h2></a>
+      <img src="assets/icons/menu.svg" (click)="toggleBar()" />
+    </div>
+    <div class="options" [class.inactive]="!isActive">
+      <menu>
+        <li><a routerLink="boys" routerLinkActive="active">Niños</a></li>
+        <li><a routerLink="" routerLinkActive="active">Niñas</a></li>
+        <li>
+          <a routerLink="accesories" routerLinkActive="active">Accesorios</a>
+        </li>
+      </menu>
+      <div class="cart">
+        <strong>Haz tu pedido aquí!</strong>
+      </div>
+    </div>
+  </nav>
+</div>

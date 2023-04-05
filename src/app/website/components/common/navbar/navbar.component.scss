@@ -1,0 +1,129 @@
+.navbar {
+  left: 0;
+  right: 0;
+  background-color: #ffeee5;
+
+  .navbar-collapse {
+    display: none;
+  }
+
+  .navbar-extended {
+    padding: 20px 0;
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+
+    .logo {
+      padding-left: 30px;
+
+      * {
+        text-decoration: none;
+        font-size: 32px;
+        color: #5b483d;
+      }
+    }
+
+    .options {
+      display: grid;
+      grid-template-columns: 4fr 1fr;
+      align-items: center;
+
+      menu {
+        display: flex;
+        list-style-type: none;
+        justify-content: center;
+        align-items: center;
+        gap: 32px;
+
+        li {
+          a {
+            font-size: 28px;
+            color: #5b483d;
+            text-decoration: none;
+          }
+        }
+
+        li:hover {
+          a {
+            color: #000;
+            padding-bottom: 1px;
+            border-bottom: #000 2px solid;
+          }
+        }
+      }
+    }
+  }
+
+  .active {
+    color: #000 !important;
+    padding-bottom: 1px !important;
+    border-bottom: #000 2px solid !important;
+  }
+}
+
+@media (max-width: 650px) {
+  .navbar {
+    .navbar-extended {
+      display: none;
+    }
+
+    .navbar-collapse {
+      display: block;
+
+      .bar {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 24px;
+
+        a {
+          text-decoration: none;
+          font-size: 18px;
+          color: #5b483d;
+        }
+
+        img {
+          width: 32px;
+        }
+      }
+
+      .options {
+        animation: slide-in 1s ease;
+        background-color: #ffeee5;
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        height: 95vh;
+
+        menu {
+          list-style: none;
+          text-align: center;
+          padding: 32px 0;
+
+          li {
+            margin-bottom: 10px;
+            a {
+              font-size: 20px;
+              color: #5b483d;
+              text-decoration: none;
+            }
+          }
+        }
+      }
+
+      .inactive {
+        display: none;
+      }
+    }
+  }
+}
+
+@keyframes slide-in {
+  from {
+    translate: -100vh;
+  }
+  to {
+    translate: 0;
+  }
+}
