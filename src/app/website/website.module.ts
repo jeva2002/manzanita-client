@@ -6,6 +6,8 @@ import { HomeComponent } from './pages/home/home.component';
 import { NavbarComponent } from './components/common/navbar/navbar.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { LayoutComponent } from './pages/layout/layout.component';
+import { BannerComponent } from './components/home/banner/banner.component';
+import { FooterComponent } from './components/common/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -13,6 +15,8 @@ import { LayoutComponent } from './pages/layout/layout.component';
     NavbarComponent,
     ProductsComponent,
     LayoutComponent,
+    BannerComponent,
+    FooterComponent,
   ],
   imports: [CommonModule, WebsiteRoutingModule],
 })
