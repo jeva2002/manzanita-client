@@ -26,7 +26,7 @@ header {
     justify-content: center;
     list-style-type: none;
     gap: 10px;
-    width: 70%;
+    width: 60%;
     height: 150px;
     overflow: hidden;
 
@@ -35,6 +35,10 @@ header {
       width: 150px;
       height: 150px;
       cursor: pointer;
+
+      span {
+        display: none;
+      }
 
       div {
         position: absolute;
@@ -67,6 +71,34 @@ header {
       img {
         transform: scale(120%);
       }
+    }
+
+    .active {
+      img {
+        filter: none;
+      }
+
+      span {
+        display: block;
+        z-index: 10;
+        position: absolute;
+        right: 10px;
+        top: 5px;
+        font-size: 20px;
+        font-weight: bold;
+        color: #fff;
+      }
+    }
+  }
+}
+
+@media (max-width: 450px) {
+  header {
+    gap: 10px;
+    .categories {
+      grid-template-columns: 1fr;
+      justify-content: center;
+      width: 150px;
     }
   }
 }

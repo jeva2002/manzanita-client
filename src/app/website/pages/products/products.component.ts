@@ -7,6 +7,8 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./products.component.scss'],
 })
 export class ProductsComponent implements OnInit {
+  currentCategory = '';
+
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {

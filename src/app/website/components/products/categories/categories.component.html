@@ -1,11 +1,21 @@
 <header>
   <button class="control" (click)="push()" type="button"><</button>
   <menu class="categories">
-    <li *ngFor="let category of categories">
+    <li
+      *ngFor="let category of categories"
+      [class.active]="currentCategory === category.id"
+    >
+      <span *ngIf="currentCategory === category.id" (click)="setFilter('')"
+        >X</span
+      >
       <div>
         <button type="button">{{ category.name | uppercase }}</button>
       </div>
-      <img [src]="category.img" [alt]="category.name">
+      <img
+        [src]="category.img"
+        [alt]="category.name"
+        (click)="setFilter(category.id)"
+      />
     </li>
   </menu>
   <button class="control" (click)="pull()" type="button">></button>
