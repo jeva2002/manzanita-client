@@ -1,0 +1,12 @@
+<header>
+  <button class="control" (click)="push()" type="button"><</button>
+  <menu class="categories">
+    <li *ngFor="let category of categories">
+      <div>
+        <button type="button">{{ category.name | uppercase }}</button>
+      </div>
+      <img [src]="category.img" [alt]="category.name">
+    </li>
+  </menu>
+  <button class="control" (click)="pull()" type="button">></button>
+</header>

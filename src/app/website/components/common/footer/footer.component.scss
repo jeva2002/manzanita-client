@@ -11,7 +11,7 @@ footer {
   }
 
   .logo {
-    padding-left: 30px;
+    margin-left: 30px;
 
     * {
       text-decoration: none;
@@ -37,11 +37,11 @@ footer {
 
       li {
         margin-bottom: 6px;
-        color: #B99A88;
+        color: #b99a88;
 
         a {
           text-decoration: none;
-          color: #B99A88;
+          color: #b99a88;
         }
 
         a:hover {
@@ -49,6 +49,19 @@ footer {
           text-decoration: underline;
         }
       }
+    }
+  }
+}
+
+@media (max-width: 450px) {
+  footer {
+    .top {
+      grid-template-columns: 1fr 2fr;
+    }
+    .info {
+      justify-content: center;
+      padding: 32px 10;
+      gap: 20px;
     }
   }
 }
