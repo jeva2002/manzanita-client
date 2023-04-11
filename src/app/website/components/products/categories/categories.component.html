@@ -5,9 +5,14 @@
       *ngFor="let category of categories"
       [class.active]="currentCategory === category.id"
     >
-      <span *ngIf="currentCategory === category.id" (click)="setFilter('')"
-        >X</span
+      <button
+        class="close"
+        type="menu"
+        *ngIf="currentCategory === category.id"
+        (click)="setFilter('')"
       >
+        X
+      </button>
       <div (click)="setFilter(category.id)">
         <button type="button">{{ category.name | uppercase }}</button>
       </div>

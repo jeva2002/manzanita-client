@@ -11,6 +11,7 @@ import { FooterComponent } from './components/common/footer/footer.component';
 import { ProductsContainerComponent } from './components/products/products-container/products-container.component';
 import { CategoriesComponent } from './components/products/categories/categories.component';
 import { ProductsFiltersComponent } from './components/products/products-filters/products-filters.component';
+import { ProductMiniatureComponent } from './components/products/product-miniature/product-miniature.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { ProductsFiltersComponent } from './components/products/products-filters
     ProductsContainerComponent,
     CategoriesComponent,
     ProductsFiltersComponent,
+    ProductMiniatureComponent,
   ],
   imports: [CommonModule, WebsiteRoutingModule],
 })

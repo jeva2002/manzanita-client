@@ -38,7 +38,7 @@ header {
       height: 150px;
       cursor: pointer;
 
-      span {
+      .close {
         display: none;
       }
 
@@ -81,7 +81,7 @@ header {
         filter: none;
       }
 
-      span {
+      .close {
         display: block;
         z-index: 10;
         position: absolute;
@@ -90,6 +90,8 @@ header {
         font-size: 20px;
         font-weight: bold;
         color: #fff;
+        background-color: transparent;
+        border: none;
       }
     }
   }

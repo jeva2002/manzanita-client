@@ -1,6 +1,9 @@
 <aside>
-  <h2>Filtros</h2>
-  <div class="filters">
+  <div class="title" (click)="setCollapseFilters()">
+    <img src="./assets/icons/filter.svg" alt="filter" class="filter-icon" />
+    <h2>Filtros</h2>
+  </div>
+  <div class="filters expanded">
     <h3>Colores disponibles</h3>
     <menu>
       <li
@@ -9,12 +12,35 @@
         [ngStyle]="{ backgroundColor: color }"
         (click)="setFilterByColor(color)"
       >
-        <img
-          src="./assets/icons/check.svg"
-          alt="check"
-          *ngIf="color === currentColor"
-        />
+        <button type="menu">
+          <img
+            src="./assets/icons/check.svg"
+            alt="check"
+            *ngIf="color === currentColor"
+          />
+        </button>
       </li>
     </menu>
+  </div>
+  <div class="filters-collapse" [class.hidden]="!collapseFilters">
+    <div class="filters">
+      <h3>Colores disponibles</h3>
+      <menu>
+        <li
+          class="color"
+          *ngFor="let color of avalaibleColors"
+          [ngStyle]="{ backgroundColor: color }"
+          (click)="setFilterByColor(color)"
+        >
+          <button type="menu">
+            <img
+              src="./assets/icons/check.svg"
+              alt="check"
+              *ngIf="color === currentColor"
+            />
+          </button>
+        </li>
+      </menu>
+    </div>
   </div>
 </aside>

@@ -6,6 +6,8 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./products-filters.component.scss'],
 })
 export class ProductsFiltersComponent {
+  collapseFilters = false;
+
   @Input() avalaibleColors!: string[];
 
   @Input() currentColor!: string;
@@ -15,5 +17,9 @@ export class ProductsFiltersComponent {
     const change = color === this.currentColor ? '' : color;
     this.currentColor = change;
     this.currentColorChange.emit(change);
+  }
+
+  setCollapseFilters() {
+    this.collapseFilters = !this.collapseFilters;
   }
 }

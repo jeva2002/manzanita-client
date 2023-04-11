@@ -7,8 +7,25 @@ aside {
   justify-content: center;
   gap: 20px;
 
-  h2 {
-    color: #5b483d;
+  .title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    h2 {
+      color: #5b483d;
+    }
+
+    img {
+      width: 32px;
+      height: 32px;
+      filter: invert(25%) sepia(9%) saturate(1614%) hue-rotate(338deg)
+        brightness(96%) contrast(80%);
+    }
+  }
+
+  .filters-collapse {
+    display: none;
   }
 
   .filters {
@@ -40,12 +57,51 @@ aside {
         justify-content: center;
         cursor: pointer;
 
-        img {
-          width: 28px;
-          height: 28px;
-          filter: invert(100%) sepia(0%) saturate(2%) hue-rotate(228deg)
-            brightness(106%) contrast(101%);
+        button {
+          width: 100%;
+          height: 100%;
+          background-color: transparent;
+          border: none;
+
+          img {
+            width: 28px;
+            height: 28px;
+            filter: invert(100%) sepia(0%) saturate(2%) hue-rotate(228deg)
+              brightness(106%) contrast(101%);
+          }
         }
+      }
+    }
+  }
+}
+
+@media (max-width: 750px) {
+  aside {
+    padding: 10px 0;
+    border-bottom: #efefef solid 2px;
+    position: relative;
+
+    .filters.expanded {
+      display: none;
+    }
+
+    .filters-collapse.hidden {
+      display: none;
+    }
+
+    .filters-collapse {
+      display: block;
+      position: absolute;
+      top: 55px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #fff;
+
+      .filters {
+        background-color: #fff;
+        z-index: 20;
+        padding: 32px 0;
       }
     }
   }
