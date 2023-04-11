@@ -1,7 +1,7 @@
 <app-layout>
   <app-products-categories [(currentCategory)]="currentCategory" />
-  <div>
-    <app-products-sizing />
+  <div class="main-container">
+    <app-products-filters [avalaibleColors]="avalaibleColors"  [(currentColor)]="currentColor"/>
     <app-products-container />
   </div>
 </app-layout>

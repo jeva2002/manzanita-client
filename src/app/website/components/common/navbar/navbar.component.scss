@@ -86,8 +86,9 @@
       }
 
       .options {
+        z-index: 100;
         animation: slide-in 1s ease;
-        background-color: #FFF4EE;
+        background-color: #FFF;
         position: absolute;
         display: flex;
         flex-direction: column;

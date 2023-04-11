@@ -1,0 +1,20 @@
+<aside>
+  <h2>Filtros</h2>
+  <div class="filters">
+    <h3>Colores disponibles</h3>
+    <menu>
+      <li
+        class="color"
+        *ngFor="let color of avalaibleColors"
+        [ngStyle]="{ backgroundColor: color }"
+        (click)="setFilterByColor(color)"
+      >
+        <img
+          src="./assets/icons/check.svg"
+          alt="check"
+          *ngIf="color === currentColor"
+        />
+      </li>
+    </menu>
+  </div>
+</aside>

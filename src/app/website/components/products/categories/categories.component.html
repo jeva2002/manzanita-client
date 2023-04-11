@@ -8,7 +8,7 @@
       <span *ngIf="currentCategory === category.id" (click)="setFilter('')"
         >X</span
       >
-      <div>
+      <div (click)="setFilter(category.id)">
         <button type="button">{{ category.name | uppercase }}</button>
       </div>
       <img

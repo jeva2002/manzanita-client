@@ -66,7 +66,6 @@ export class CategoriesComponent {
   ];
 
   @Input() currentCategory!: string;
-
   @Output() currentCategoryChange = new EventEmitter<string>();
 
   setFilter(categoryId: string) {

@@ -9,8 +9,8 @@ import { LayoutComponent } from './pages/layout/layout.component';
 import { BannerComponent } from './components/home/banner/banner.component';
 import { FooterComponent } from './components/common/footer/footer.component';
 import { ProductsContainerComponent } from './components/products/products-container/products-container.component';
-import { SizingComponent } from './components/products/sizing/sizing.component';
 import { CategoriesComponent } from './components/products/categories/categories.component';
+import { ProductsFiltersComponent } from './components/products/products-filters/products-filters.component';
 
 @NgModule({
   declarations: [
@@ -21,8 +21,8 @@ import { CategoriesComponent } from './components/products/categories/categories
     BannerComponent,
     FooterComponent,
     ProductsContainerComponent,
-    SizingComponent,
     CategoriesComponent,
+    ProductsFiltersComponent,
   ],
   imports: [CommonModule, WebsiteRoutingModule],
 })

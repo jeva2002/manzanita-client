@@ -1,0 +1,52 @@
+aside {
+  width: 100%;
+  padding: 48px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+
+  h2 {
+    color: #5b483d;
+  }
+
+  .filters {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+
+    h3 {
+      color: #b99a88;
+      text-align: center;
+    }
+
+    menu {
+      width: 100%;
+      list-style-type: none;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      width: 70%;
+
+      .color {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+
+        img {
+          width: 28px;
+          height: 28px;
+          filter: invert(100%) sepia(0%) saturate(2%) hue-rotate(228deg)
+            brightness(106%) contrast(101%);
+        }
+      }
+    }
+  }
+}
