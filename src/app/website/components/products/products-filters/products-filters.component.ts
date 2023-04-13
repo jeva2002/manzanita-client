@@ -15,17 +15,13 @@ export class ProductsFiltersComponent implements OnInit {
   constructor(private filters: FiltersService) {}
 
   ngOnInit(): void {
-    this.filters.productsFilters.subscribe((productsFilters) => {
+    this.filters.getProductsFilters().subscribe((productsFilters) => {
       this.currentColor = productsFilters.color;
     });
   }
 
   setFilterByColor(color: string) {
-    const filters = this.filters.productsFilters.getValue();
-    this.filters.productsFilters.next({
-      ...filters,
-      color: filters.color === color ? '' : color,
-    });
+    this.filters.modifyFilters(color, 'color');
   }
 
   setCollapseFilters() {

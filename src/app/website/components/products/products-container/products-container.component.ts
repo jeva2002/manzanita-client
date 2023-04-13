@@ -15,7 +15,7 @@ export class ProductsContainerComponent implements OnInit {
   constructor(private filters: FiltersService) {}
 
   ngOnInit(): void {
-    this.filters.productsFilters.subscribe(() => {
+    this.filters.getProductsFilters().subscribe(() => {
       this.miniatures = this.filters.applyFiltersProductsList(this.products);
     });
   }

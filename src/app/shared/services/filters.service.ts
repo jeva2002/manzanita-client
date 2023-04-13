@@ -7,13 +7,17 @@ import { Product } from 'src/app/models/Product.model';
   providedIn: 'root',
 })
 export class FiltersService {
-  productsFilters = new BehaviorSubject<Filters>({
+  private productsFilters$ = new BehaviorSubject<Filters>({
     category: '',
     color: '',
   });
 
-  applyFiltersProductsList(productsList: Product[]) {
-    const filters = this.productsFilters.getValue();
+  getProductsFilters() {
+    return this.productsFilters$.asObservable();
+  }
+
+  applyFiltersProductsList(productsList: Product[]): Product[] {
+    const filters = this.productsFilters$.getValue();
     return productsList.filter((product) => {
       let flag = true;
       if (
@@ -23,6 +27,14 @@ export class FiltersService {
         flag = false;
       }
       return flag;
+    });
+  }
+
+  modifyFilters(value: string, targetFilter: 'color' | 'category') {
+    const filters = this.productsFilters$.getValue();
+    this.productsFilters$.next({
+      ...filters,
+      [targetFilter]: value,
     });
   }
 }

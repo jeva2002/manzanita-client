@@ -71,16 +71,13 @@ export class CategoriesComponent implements OnInit {
   constructor(private filters: FiltersService) {}
 
   ngOnInit(): void {
-    this.filters.productsFilters.subscribe((productsFilters) => {
+    this.filters.getProductsFilters().subscribe((productsFilters) => {
       this.currentCategory = productsFilters.category;
     });
   }
 
   setFilter(category: string) {
-    this.filters.productsFilters.next({
-      ...this.filters.productsFilters.getValue(),
-      category,
-    });
+    this.filters.modifyFilters(category, 'category');
   }
 
   pushCarousel() {
