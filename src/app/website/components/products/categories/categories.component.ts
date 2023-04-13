@@ -1,12 +1,13 @@
-import { Component, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Category } from 'src/app/models/Category.model';
+import { FiltersService } from 'src/app/website/services/filters.service';
 
 @Component({
   selector: 'app-products-categories',
   templateUrl: './categories.component.html',
   styleUrls: ['./categories.component.scss'],
 })
-export class CategoriesComponent {
+export class CategoriesComponent implements OnInit {
   categories: Category[] = [
     {
       id: '1',
@@ -65,15 +66,24 @@ export class CategoriesComponent {
     },
   ];
 
-  @Input() currentCategory!: string;
-  @Output() currentCategoryChange = new EventEmitter<string>();
+  currentCategory = '';
 
-  setFilter(categoryId: string) {
-    this.currentCategory = categoryId;
-    this.currentCategoryChange.emit(categoryId);
+  constructor(private filters: FiltersService) {}
+
+  ngOnInit(): void {
+    this.filters.productsFilters.subscribe((productsFilters) => {
+      this.currentCategory = productsFilters.category;
+    });
   }
 
-  push() {
+  setFilter(category: string) {
+    this.filters.productsFilters.next({
+      ...this.filters.productsFilters.getValue(),
+      category,
+    });
+  }
+
+  pushCarousel() {
     const lastItem = this.categories.at(-1);
     if (lastItem) {
       this.categories.pop();
@@ -81,7 +91,7 @@ export class CategoriesComponent {
     }
   }
 
-  pull() {
+  pullCarousel() {
     const firstItem = this.categories[0];
     this.categories.shift();
     this.categories.push(firstItem);

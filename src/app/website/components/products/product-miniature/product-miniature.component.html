@@ -1,1 +1,7 @@
-<p>product-miniature works!</p>
+<li *ngIf="product" class="miniature">
+  <img [src]="product.img" [alt]="product.name" />
+  <div>
+    <span>{{ product.name }}</span>
+    <span>{{ product.price | currency : "COP" }}</span>
+  </div>
+</li>

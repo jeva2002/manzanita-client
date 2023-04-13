@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Product } from 'src/app/models/Product.model';
+import { Product, ProductMiniature } from 'src/app/models/Product.model';
 
 @Component({
   selector: 'app-products',
@@ -8,56 +8,60 @@ import { Product } from 'src/app/models/Product.model';
   styleUrls: ['./products.component.scss'],
 })
 export class ProductsComponent implements OnInit {
-  currentCategory = '';
-  currentColor = '';
   products: Product[] = [
     {
       id: '1',
       img: './assets/imgs/boy.jpg',
-      mainColor: '#123',
+      color: '#123',
       name: 'mameluco',
       price: '500',
       sizes: ['1 mes'],
+      category: '1',
     },
     {
       id: '2',
       img: './assets/imgs/boy.jpg',
-      mainColor: '#456',
+      color: '#456',
       name: 'mameluco',
       price: '500',
       sizes: ['1 mes'],
+      category: '1',
     },
     {
       id: '3',
       img: './assets/imgs/boy.jpg',
-      mainColor: '#789',
+      color: '#789',
       name: 'mameluco',
       price: '500',
       sizes: ['1 mes'],
+      category: '1',
     },
     {
       id: '4',
       img: './assets/imgs/boy.jpg',
-      mainColor: '#abc',
+      color: '#abc',
       name: 'mameluco',
       price: '500',
       sizes: ['1 mes'],
+      category: '1',
     },
     {
       id: '5',
       img: './assets/imgs/boy.jpg',
-      mainColor: '#bcd',
+      color: '#bcd',
       name: 'mameluco',
       price: '500',
       sizes: ['1 mes'],
+      category: '1',
     },
     {
       id: '6',
       img: './assets/imgs/boy.jpg',
-      mainColor: '#123',
+      color: '#123',
       name: 'mameluco',
       price: '500',
       sizes: ['1 mes'],
+      category: '1',
     },
   ];
   avalaibleColors: string[] = [];
@@ -71,9 +75,8 @@ export class ProductsComponent implements OnInit {
 
   getAvalaibleColors() {
     const differentColors = new Set(
-      this.products.map((product) => product.mainColor)
+      this.products.map((product) => product.color)
     );
-    console.log(differentColors);
     this.avalaibleColors.push(...differentColors);
   }
 }

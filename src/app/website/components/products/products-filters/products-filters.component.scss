@@ -1,6 +1,8 @@
 aside {
+  height: fit-content;
   width: 100%;
   padding: 48px 0;
+  margin: 0 40px 0 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -77,9 +79,11 @@ aside {
 
 @media (max-width: 750px) {
   aside {
-    padding: 10px 0;
+    padding: 10px 0 10px 40px;
     border-bottom: #efefef solid 2px;
     position: relative;
+    align-items: flex-start;
+    justify-content: flex-start;
 
     .filters.expanded {
       display: none;
@@ -97,11 +101,19 @@ aside {
       right: 0;
       bottom: 0;
       background-color: #fff;
+      width: 100%;
 
       .filters {
         background-color: #fff;
         z-index: 20;
         padding: 32px 0;
+        align-items: flex-start;
+        padding-left: 40px;
+
+        menu {
+          justify-content: start;
+          align-items: flex-start;
+        }
       }
     }
   }

@@ -1,5 +1,5 @@
 <header>
-  <button class="control" (click)="push()" type="button"><</button>
+  <button class="control" (click)="pushCarousel()" type="button"><</button>
   <menu class="categories">
     <li
       *ngFor="let category of categories"
@@ -23,5 +23,5 @@
       />
     </li>
   </menu>
-  <button class="control" (click)="pull()" type="button">></button>
+  <button class="control" (click)="pullCarousel()" type="button">></button>
 </header>

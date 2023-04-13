@@ -1,1 +1,5 @@
-<p>products-container works!</p>
+<main>
+  <menu class="container">
+    <app-product-miniature *ngFor="let product of miniatures" [product]="product" />
+  </menu>
+</main>

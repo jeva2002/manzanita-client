@@ -1,22 +1,31 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { FiltersService } from 'src/app/website/services/filters.service';
 
 @Component({
   selector: 'app-products-filters',
   templateUrl: './products-filters.component.html',
   styleUrls: ['./products-filters.component.scss'],
 })
-export class ProductsFiltersComponent {
+export class ProductsFiltersComponent implements OnInit {
   collapseFilters = false;
+  currentColor = '';
 
   @Input() avalaibleColors!: string[];
 
-  @Input() currentColor!: string;
-  @Output() currentColorChange = new EventEmitter<string>();
+  constructor(private filters: FiltersService) {}
+
+  ngOnInit(): void {
+    this.filters.productsFilters.subscribe((productsFilters) => {
+      this.currentColor = productsFilters.color;
+    });
+  }
 
   setFilterByColor(color: string) {
-    const change = color === this.currentColor ? '' : color;
-    this.currentColor = change;
-    this.currentColorChange.emit(change);
+    const filters = this.filters.productsFilters.getValue();
+    this.filters.productsFilters.next({
+      ...filters,
+      color: filters.color === color ? '' : color,
+    });
   }
 
   setCollapseFilters() {
