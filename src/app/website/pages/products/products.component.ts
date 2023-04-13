@@ -59,7 +59,7 @@ export class ProductsComponent implements OnInit {
       img: './assets/imgs/boy.jpg',
       color: '#123',
       name: 'mameluco',
-      price: '500',
+      price: '150500',
       sizes: ['1 mes'],
       category: '1',
     },

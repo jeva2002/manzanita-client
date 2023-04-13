@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Product, ProductMiniature } from 'src/app/models/Product.model';
-import { FiltersService } from 'src/app/website/services/filters.service';
+import { FiltersService } from 'src/app/shared/services/filters.service';
 
 @Component({
   selector: 'app-products-container',
