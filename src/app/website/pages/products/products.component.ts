@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Product, ProductMiniature } from 'src/app/models/Product.model';
+import { Product } from 'src/app/models/Product.model';
 
 @Component({
   selector: 'app-products',
@@ -14,7 +14,7 @@ export class ProductsComponent implements OnInit {
       img: './assets/imgs/boy.jpg',
       color: '#123',
       name: 'mameluco',
-      price: '500',
+      price: '42021',
       sizes: ['1 mes'],
       category: '1',
     },
@@ -23,16 +23,16 @@ export class ProductsComponent implements OnInit {
       img: './assets/imgs/boy.jpg',
       color: '#456',
       name: 'mameluco',
-      price: '500',
+      price: '3512',
       sizes: ['1 mes'],
       category: '1',
     },
     {
       id: '3',
-      img: './assets/imgs/boy.jpg',
+      img: './assets/imgs/accesory.jpg',
       color: '#789',
       name: 'mameluco',
-      price: '500',
+      price: '5000',
       sizes: ['1 mes'],
       category: '1',
     },

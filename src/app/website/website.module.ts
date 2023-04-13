@@ -12,6 +12,7 @@ import { ProductsContainerComponent } from './components/products/products-conta
 import { CategoriesComponent } from './components/products/categories/categories.component';
 import { ProductsFiltersComponent } from './components/products/products-filters/products-filters.component';
 import { ProductMiniatureComponent } from './components/products/product-miniature/product-miniature.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,6 @@ import { ProductMiniatureComponent } from './components/products/product-miniatu
     ProductsFiltersComponent,
     ProductMiniatureComponent,
   ],
-  imports: [CommonModule, WebsiteRoutingModule],
+  imports: [CommonModule, WebsiteRoutingModule, SharedModule],
 })
 export class WebsiteModule {}

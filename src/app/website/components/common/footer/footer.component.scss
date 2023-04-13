@@ -8,6 +8,8 @@ footer {
     grid-template-columns: 10fr 2fr;
     padding: 20px 0;
     border-bottom: 2px solid #efefef;
+    border-top: 2px solid #efefef;
+    margin-top: 20px;
   }
 
   .logo {
@@ -48,6 +50,13 @@ footer {
           color: #5b483d;
           text-decoration: underline;
         }
+      }
+    }
+
+    .contact {
+      * {
+        user-select: text;
+        cursor: auto;
       }
     }
   }

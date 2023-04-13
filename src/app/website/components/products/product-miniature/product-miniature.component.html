@@ -1,7 +1,7 @@
-<li *ngIf="product" class="miniature">
+<li *ngIf="product" class="miniature" tabindex="0">
   <img [src]="product.img" [alt]="product.name" />
   <div>
     <span>{{ product.name }}</span>
-    <span>{{ product.price | currency : "COP" }}</span>
+    <span>{{ product.price | currencyFormat }}</span>
   </div>
 </li>
