@@ -16,15 +16,15 @@ export class FiltersService {
     return this.productsFilters$.asObservable();
   }
 
-  applyFiltersProductsList(productsList: Product[]): Product[] {
+  applyFiltersProductsList(productsList: readonly Product[]): Product[] {
     const filters = this.productsFilters$.getValue();
     return productsList.filter((product) => {
       let flag = true;
-      if (
-        (!!filters.color && product.color !== filters.color) ||
-        (!!filters.category && product.category !== filters.category)
-      ) {
+      if (!!filters.category && product.category !== filters.category) {
         flag = false;
+      }
+      if (filters.color) {
+        flag = product.color.some((color) => color === filters.color);
       }
       return flag;
     });
@@ -34,7 +34,7 @@ export class FiltersService {
     const filters = this.productsFilters$.getValue();
     this.productsFilters$.next({
       ...filters,
-      [targetFilter]: value,
+      [targetFilter]: filters[targetFilter] === value ? '' : value,
     });
   }
 }

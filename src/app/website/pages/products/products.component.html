@@ -2,6 +2,6 @@
   <app-products-categories />
   <div class="main-container">
     <app-products-filters [avalaibleColors]="avalaibleColors" />
-    <app-products-container [products]="products" />
+    <app-products-container [products]="products$ | async" />
   </div>
 </app-layout>

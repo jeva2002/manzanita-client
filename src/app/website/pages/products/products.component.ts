@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { Observable, map } from 'rxjs';
 import { Product } from 'src/app/models/Product.model';
+import {
+  selectAccesories,
+  selectClothes,
+} from 'src/app/state/selectors/products.selector';
 
 @Component({
   selector: 'app-products',
@@ -8,75 +14,29 @@ import { Product } from 'src/app/models/Product.model';
   styleUrls: ['./products.component.scss'],
 })
 export class ProductsComponent implements OnInit {
-  products: Product[] = [
-    {
-      id: '1',
-      img: './assets/imgs/boy.jpg',
-      color: '#123',
-      name: 'mameluco',
-      price: '42021',
-      sizes: ['1 mes'],
-      category: '1',
-    },
-    {
-      id: '2',
-      img: './assets/imgs/boy.jpg',
-      color: '#456',
-      name: 'mameluco',
-      price: '3512',
-      sizes: ['1 mes'],
-      category: '1',
-    },
-    {
-      id: '3',
-      img: './assets/imgs/accesory.jpg',
-      color: '#789',
-      name: 'mameluco',
-      price: '5000',
-      sizes: ['1 mes'],
-      category: '1',
-    },
-    {
-      id: '4',
-      img: './assets/imgs/boy.jpg',
-      color: '#abc',
-      name: 'mameluco',
-      price: '500',
-      sizes: ['1 mes'],
-      category: '1',
-    },
-    {
-      id: '5',
-      img: './assets/imgs/boy.jpg',
-      color: '#bcd',
-      name: 'mameluco',
-      price: '500',
-      sizes: ['1 mes'],
-      category: '1',
-    },
-    {
-      id: '6',
-      img: './assets/imgs/boy.jpg',
-      color: '#123',
-      name: 'mameluco',
-      price: '150500',
-      sizes: ['1 mes'],
-      category: '1',
-    },
-  ];
+  products$: Observable<readonly Product[]> = new Observable();
   avalaibleColors: string[] = [];
 
-  constructor(private route: ActivatedRoute) {}
+  // eslint-disable-next-line @ngrx/no-typed-global-store, @typescript-eslint/no-explicit-any
+  constructor(private route: ActivatedRoute, private store: Store<any>) {}
 
   ngOnInit(): void {
-    this.route.url.subscribe((a) => console.log(a[0].path));
-    this.getAvalaibleColors();
+    this.route.paramMap.subscribe((params) => {
+      this.products$ = this.store.select(
+        params.get('productType') === 'clothes'
+          ? selectClothes
+          : selectAccesories
+      );
+      this.getAvalaibleColors();
+    });
   }
 
   getAvalaibleColors() {
-    const differentColors = new Set(
-      this.products.map((product) => product.color)
-    );
-    this.avalaibleColors.push(...differentColors);
+    this.products$
+      .pipe(map((project) => project.map((product) => product.color)))
+      .subscribe((list) => {
+        const differentColors = new Set(list.flat());
+        this.avalaibleColors = [...differentColors];
+      });
   }
 }

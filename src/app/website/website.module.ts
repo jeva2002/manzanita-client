@@ -13,6 +13,7 @@ import { CategoriesComponent } from './components/products/categories/categories
 import { ProductsFiltersComponent } from './components/products/products-filters/products-filters.component';
 import { ProductMiniatureComponent } from './components/products/product-miniature/product-miniature.component';
 import { SharedModule } from '../shared/shared.module';
+import { ProductDetailComponent } from './components/products/product-detail/product-detail.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { SharedModule } from '../shared/shared.module';
     CategoriesComponent,
     ProductsFiltersComponent,
     ProductMiniatureComponent,
+    ProductDetailComponent,
   ],
   imports: [CommonModule, WebsiteRoutingModule, SharedModule],
 })

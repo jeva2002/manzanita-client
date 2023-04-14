@@ -11,7 +11,6 @@ export class CurrencyFormatPipe implements PipeTransform {
         .split('')
         .reverse()
         .map((number, i) => {
-          console.log(i !== value.length);
           if ((i + 1) % 3 === 0 && i !== value.length - 1) return '.' + number;
           return number;
         })
