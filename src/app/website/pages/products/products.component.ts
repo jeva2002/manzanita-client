@@ -16,6 +16,7 @@ import {
 export class ProductsComponent implements OnInit {
   products$: Observable<readonly Product[]> = new Observable();
   avalaibleColors: string[] = [];
+  categories: string[] = [];
 
   // eslint-disable-next-line @ngrx/no-typed-global-store, @typescript-eslint/no-explicit-any
   constructor(private route: ActivatedRoute, private store: Store<any>) {}
@@ -28,6 +29,7 @@ export class ProductsComponent implements OnInit {
           : selectAccesories
       );
       this.getAvalaibleColors();
+      this.getCategories();
     });
   }
 
@@ -38,5 +40,12 @@ export class ProductsComponent implements OnInit {
         const differentColors = new Set(list.flat());
         this.avalaibleColors = [...differentColors];
       });
+  }
+
+  getCategories() {
+    this.products$.forEach((products) => {
+      const categories = new Set(products.map((product) => product.category));
+      this.categories = [...categories];
+    });
   }
 }

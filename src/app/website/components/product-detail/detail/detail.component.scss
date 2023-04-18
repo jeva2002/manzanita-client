@@ -26,6 +26,10 @@ main {
     margin-top: -60px;
 
     .name {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+
       small {
         color: #777;
         user-select: text;

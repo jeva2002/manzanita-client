@@ -40,7 +40,7 @@ export const initialState: ProductsState = {
         name: 'mameluco',
         price: '500',
         sizes: ['1 mes'],
-        category: '1',
+        category: '2',
       },
       {
         id: '5',
@@ -49,7 +49,7 @@ export const initialState: ProductsState = {
         name: 'mameluco',
         price: '500',
         sizes: ['1 mes'],
-        category: '1',
+        category: '2',
       },
       {
         id: '6',
@@ -58,7 +58,7 @@ export const initialState: ProductsState = {
         name: 'mameluco',
         price: '150500',
         sizes: ['1 mes'],
-        category: '1',
+        category: '3',
       },
       {
         id: '7',
@@ -67,7 +67,7 @@ export const initialState: ProductsState = {
         name: 'mameluco',
         price: '150500',
         sizes: ['1 mes'],
-        category: '1',
+        category: '3',
       },
     ],
     accesories: [],

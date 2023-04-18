@@ -1,0 +1,5 @@
+<app-layout>
+  <ng-container *ngIf="product$ | async as product">
+    <app-detail [product]="product" />
+  </ng-container>
+</app-layout>

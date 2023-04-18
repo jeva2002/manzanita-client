@@ -1,0 +1,25 @@
+<main>
+  <section class="img-container">
+    <img [src]="product.img" [alt]="product.name" />
+  </section>
+  <section class="info-container">
+    <div class="name">
+      <h1>{{ product.name | uppercase }}</h1>
+      <small>Referencia: {{ product.category + "-" + product.id }}</small>
+      <span class="price">{{ product.price | currencyFormat }}</span>
+    </div>
+    <div class="features">
+      <span class="sizes-label">Tallas disponibles:</span>
+      <div class="sizes">
+        <div *ngFor="let size of product.sizes">{{ size }}</div>
+      </div>
+      <span class="colors-label">Colores disponibles:</span>
+      <div class="colors">
+        <div
+          *ngFor="let color of product.color"
+          [ngStyle]="{ backgroundColor: color }"
+        ></div>
+      </div>
+    </div>
+  </section>
+</main>

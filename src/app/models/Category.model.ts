@@ -3,3 +3,8 @@ export interface Category {
   img: string;
   name: string;
 }
+
+export interface CategoriesState {
+  loading: boolean;
+  categories: Category[];
+}
