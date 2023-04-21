@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { CmsRoutingModule } from './cms-routing.module';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
@@ -18,6 +19,13 @@ import { MatButtonModule } from '@angular/material/button';
     LoginComponent,
     LoginFormComponent,
   ],
-  imports: [CommonModule, CmsRoutingModule, MatFormFieldModule, MatInputModule, MatButtonModule],
+  imports: [
+    CommonModule,
+    CmsRoutingModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+  ],
 })
 export class CmsModule {}

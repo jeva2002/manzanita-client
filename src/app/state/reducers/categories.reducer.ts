@@ -66,6 +66,6 @@ export const initialState: CategoriesState = {
 export const categoriesReducer = createReducer(
   initialState,
   on(ProductsActions.getProducts, (_state): CategoriesState => {
-    return { ..._state, loading: true };
+    return { ..._state, loading: false };
   })
 );
