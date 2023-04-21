@@ -9,6 +9,12 @@
         type="email"
         placeholder="pat@example.com"
       />
+      <mat-error
+        class="error"
+        *ngIf="loginForm.controls.email.hasError('email') || loginForm.controls.email.hasError('required')"
+      >
+        Ingrese un correo electrónico válido
+      </mat-error>
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Contraseña</mat-label>
@@ -18,8 +24,20 @@
         type="password"
         placeholder="**********"
       />
+      <mat-error
+      class="error"
+      *ngIf="loginForm.controls.email.hasError('email') || loginForm.controls.email.hasError('required')"
+    >
+      Ingrese una contraseña válida
+    </mat-error>
     </mat-form-field>
-    <button class="button" mat-flat-button color="primary" type="submit">
+    <button
+      class="button"
+      mat-flat-button
+      color="primary"
+      type="submit"
+      [disabled]="!loginForm.valid"
+    >
       Ingresar
     </button>
   </form>

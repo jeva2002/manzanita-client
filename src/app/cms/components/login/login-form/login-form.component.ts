@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { adminActions } from 'src/app/state/actions/admin.actions';
 
 @Component({
   selector: 'app-login-form',
@@ -7,14 +10,18 @@ import { FormBuilder } from '@angular/forms';
   styleUrls: ['./login-form.component.scss'],
 })
 export class LoginFormComponent {
-  builder = new FormBuilder();
+  // eslint-disable-next-line @ngrx/no-typed-global-store, @typescript-eslint/no-explicit-any
+  constructor(private builder: FormBuilder, private store: Store<any>, private router: Router) {}
 
   loginForm = this.builder.group({
-    email: [''],
-    password: [''],
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required]],
   });
 
   onSubmit() {
-    console.log(this.loginForm.value)
+    this.store.dispatch(adminActions.setAuthorization({
+      token: 'serverless token'
+    }))
+    this.router.navigate(['cms', 'dashboard'])
   }
 }
