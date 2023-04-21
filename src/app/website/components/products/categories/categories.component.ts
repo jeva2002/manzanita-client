@@ -12,6 +12,7 @@ import { selectCategoriesList } from 'src/app/state/selectors/categories.selecto
 export class CategoriesComponent implements OnInit, OnChanges {
   categories: Category[] = [];
   currentCategory = '';
+  carouselWidth = 'repeat(6, 1fr)'
 
   @Input() categoriesByProducts: string[] = [];
 
@@ -26,6 +27,9 @@ export class CategoriesComponent implements OnInit, OnChanges {
 
   ngOnChanges(): void {
     this.getCategories();
+    if(this.categories.length < 6){
+      this.carouselWidth = `repeat(${this.categories.length}, 1fr)`
+    }
   }
 
   setFilter(category: string) {

@@ -1,6 +1,16 @@
 <header *ngIf="categories.length > 0">
-  <button class="control" (click)="pushCarousel()" type="button"><</button>
-  <menu class="categories">
+  <button
+    *ngIf="categories.length >= 6"
+    class="control"
+    (click)="pushCarousel()"
+    type="button"
+  >
+    <
+  </button>
+  <menu
+    class="categories"
+    [ngStyle]="{ 'grid-template-columns': carouselWidth }"
+  >
     <li
       *ngFor="let category of categories"
       [class.active]="currentCategory === category.id"
@@ -23,5 +33,12 @@
       />
     </li>
   </menu>
-  <button class="control" (click)="pullCarousel()" type="button">></button>
+  <button
+    *ngIf="categories.length > 6"
+    class="control"
+    (click)="pullCarousel()"
+    type="button"
+  >
+    >
+  </button>
 </header>
