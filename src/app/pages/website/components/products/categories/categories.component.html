@@ -1,12 +1,5 @@
 <header *ngIf="categories.length > 0">
-  <button
-    *ngIf="categories.length >= 6"
-    class="control"
-    (click)="pushCarousel()"
-    type="button"
-  >
-    <
-  </button>
+  <button class="control" (click)="pushCarousel()" type="button"><</button>
   <menu
     class="categories"
     [ngStyle]="{ 'grid-template-columns': carouselWidth }"
@@ -33,12 +26,5 @@
       />
     </li>
   </menu>
-  <button
-    *ngIf="categories.length > 6"
-    class="control"
-    (click)="pullCarousel()"
-    type="button"
-  >
-    >
-  </button>
+  <button class="control" (click)="pullCarousel()" type="button">></button>
 </header>

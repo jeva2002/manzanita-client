@@ -5,13 +5,14 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 const routes: Routes = [
   {
     path: 'cms',
-    loadChildren: () => import('./cms/cms.module').then((m) => m.CmsModule),
+    loadChildren: () =>
+      import('./pages/cms/cms.module').then((m) => m.CmsModule),
     title: 'Administrador',
   },
   {
     path: 'shop',
     loadChildren: () =>
-      import('./website/website.module').then((m) => m.WebsiteModule),
+      import('./pages/website/website.module').then((m) => m.WebsiteModule),
     title: 'Tienda Manzanita',
   },
   {

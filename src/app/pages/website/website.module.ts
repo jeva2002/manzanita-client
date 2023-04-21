@@ -12,7 +12,7 @@ import { ProductsContainerComponent } from './components/products/products-conta
 import { CategoriesComponent } from './components/products/categories/categories.component';
 import { ProductsFiltersComponent } from './components/products/products-filters/products-filters.component';
 import { ProductMiniatureComponent } from './components/products/product-miniature/product-miniature.component';
-import { SharedModule } from '../shared/shared.module';
+import { SharedModule } from 'src/app/shared/shared.module';
 import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
 import { DetailComponent } from './components/product-detail/detail/detail.component';
 
