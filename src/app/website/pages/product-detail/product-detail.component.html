@@ -1,5 +1,8 @@
 <app-layout>
-  <ng-container *ngIf="product$ | async as product">
-    <app-detail [product]="product" />
-  </ng-container>
+    <app-detail *ngIf="product; else noProduct" [product]="product" />
+    <ng-template #noProduct>
+      <main class="no-exist">
+        <h1>El producto no ha sido encontrado...</h1>
+      </main>
+    </ng-template>
 </app-layout>

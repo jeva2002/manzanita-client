@@ -8,17 +8,14 @@ const routes: Routes = [
   {
     path: ':productType/:id',
     component: ProductDetailComponent,
-    title: 'Detalle de producto',
   },
   {
     path: ':productType',
     component: ProductsComponent,
-    title: 'Lista de productos',
   },
   {
     path: '',
     component: HomeComponent,
-    title: 'Tienda Manzanita',
   },
 ];
 

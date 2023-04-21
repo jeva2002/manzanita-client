@@ -1,5 +1,10 @@
 <main>
-    <menu class="container">
+    <menu class="container" *ngIf="miniatures.length; else elseBlock">
       <app-product-miniature *ngFor="let product of miniatures" [product]="product" />
     </menu>
+    <ng-template #elseBlock>
+      <div class="no-products">
+        <h1>No hay productos de este tipo en el momento...</h1>
+      </div>
+    </ng-template>
 </main>

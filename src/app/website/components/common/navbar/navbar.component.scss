@@ -10,9 +10,12 @@
     padding: 20px 0;
     display: grid;
     grid-template-columns: 2fr 10fr;
+    border-bottom: 2px solid #efefef;
+    align-items: center;
 
     .logo {
       padding-left: 30px;
+      margin-top: 14px;
 
       * {
         text-decoration: none;
@@ -67,6 +70,7 @@
 
     .navbar-collapse {
       display: block;
+      border-bottom: 2px solid #efefef;
 
       .bar {
         width: 100%;
@@ -76,8 +80,12 @@
 
         a {
           text-decoration: none;
-          font-size: 18px;
-          color: #5b483d;
+          margin-top: 20px;
+
+          h2 {
+            font-size: 24px;
+            color: #5b483d;
+          }
         }
 
         img {
@@ -88,7 +96,7 @@
       .options {
         z-index: 100;
         animation: slide-in 1s ease;
-        background-color: #FFF;
+        background-color: #fff;
         position: absolute;
         display: flex;
         flex-direction: column;

@@ -6,16 +6,23 @@ const routes: Routes = [
   {
     path: 'cms',
     loadChildren: () => import('./cms/cms.module').then((m) => m.CmsModule),
-    title: 'Administrador'
+    title: 'Administrador',
+  },
+  {
+    path: 'shop',
+    loadChildren: () =>
+      import('./website/website.module').then((m) => m.WebsiteModule),
+    title: 'Tienda Manzanita',
   },
   {
     path: '',
-    loadChildren: () =>
-      import('./website/website.module').then((m) => m.WebsiteModule),
+    redirectTo: '/shop',
+    pathMatch: 'full',
   },
   {
     path: '**',
     component: NotFoundComponent,
+    title: 'Página no encontrada',
   },
 ];
 

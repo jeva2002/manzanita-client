@@ -23,9 +23,11 @@ export const selectProduct = (props: {
   category: 'clothes' | 'accesories';
   id: string;
 }) => {
-  return createSelector(selectProductsFeature, (state: ProductsState) =>
-    state.products[props.category].find((product) => product.id === props.id)
-  );
+  return createSelector(selectProductsFeature, (state: ProductsState) => {
+    return state.products[props.category].find(
+      (product) => product.id === props.id
+    );
+  });
 };
 
 export const selectProductsLoading = createSelector(
