@@ -8,3 +8,9 @@ export const selectCategoriesList = createSelector(
   selectCategoriesFeature,
   (state: CategoriesState) => state.categories
 );
+
+export const selectCategoryById = (id: string) => {
+  return createSelector(selectCategoriesFeature, (state: CategoriesState) =>
+    state.categories.find((category) => category.id === id)
+  );
+};

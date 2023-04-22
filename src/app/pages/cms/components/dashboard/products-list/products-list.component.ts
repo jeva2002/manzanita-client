@@ -1,3 +1,4 @@
+/* eslint-disable @ngrx/avoid-mapping-selectors */
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, map } from 'rxjs';
@@ -11,7 +12,7 @@ import { selectProductsList } from 'src/app/state/selectors/products.selector';
 })
 export class ProductsListComponent implements OnInit {
   products$ = new Observable<readonly Product[]>();
-  columnsToDisplay = ['id', 'name', 'category'];
+  columnsToDisplay = ['id', 'name', 'category', 'options'];
 
   // eslint-disable-next-line @ngrx/no-typed-global-store, @typescript-eslint/no-explicit-any
   constructor(private store: Store<any>) {}
@@ -19,7 +20,15 @@ export class ProductsListComponent implements OnInit {
   ngOnInit(): void {
     this.products$ = this.store
       .select(selectProductsList)
-      // eslint-disable-next-line @ngrx/avoid-mapping-selectors
-      .pipe(map((products) => [...products.accesories, ...products.clothes]));
+      .pipe(
+        map((products) => [
+          ...products.accesories.map((product) => {
+            return { ...product, category: 'A' + product.category };
+          }),
+          ...products.clothes.map((product) => {
+            return { ...product, category: 'C' + product.category };
+          }),
+        ])
+      );
   }
 }

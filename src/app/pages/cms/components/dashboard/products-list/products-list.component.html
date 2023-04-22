@@ -2,8 +2,8 @@
   <ng-container *ngIf="products$ | async as products">
     <table mat-table [dataSource]="products">
       <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef>No.</th>
-        <td mat-cell *matCellDef="let product">{{ product.id + 1 }}</td>
+        <th mat-header-cell *matHeaderCellDef>ID</th>
+        <td mat-cell *matCellDef="let product">{{ product.id }}</td>
       </ng-container>
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef>Nombre</th>
@@ -11,7 +11,14 @@
       </ng-container>
       <ng-container matColumnDef="category">
         <th mat-header-cell *matHeaderCellDef>Categoría</th>
-        <td mat-cell *matCellDef="let product">{{ product.category }}</td>
+        <td mat-cell *matCellDef="let product">{{ product.category | parseCategory }}</td>
+      </ng-container>
+      <ng-container matColumnDef="options">
+        <th mat-header-cell *matHeaderCellDef>Opciones</th>
+        <td mat-cell *matCellDef="let product">
+          <a [routerLink]="'/cms/dashboard/update/' + product.category[0] + '-' + product.id " class="edit">Editar</a>
+          <button class="delete">Eliminar</button>
+        </td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>

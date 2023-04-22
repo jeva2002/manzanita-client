@@ -13,6 +13,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
+import { ParseCategoryPipe } from './pipes/parse-category.pipe';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { MatTableModule } from '@angular/material/table';
     LoginComponent,
     LoginFormComponent,
     ProductsListComponent,
+    ParseCategoryPipe,
   ],
   imports: [
     CommonModule,
