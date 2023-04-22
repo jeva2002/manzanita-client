@@ -35,11 +35,13 @@ main {
         color: #777;
         user-select: text;
         cursor: auto;
+        margin-top: -32px;
+        margin-bottom: 12px;
       }
-    }
 
-    .price {
-      font-size: 32px;
+      .price {
+        font-size: 32px;
+      }
     }
 
     .features {
