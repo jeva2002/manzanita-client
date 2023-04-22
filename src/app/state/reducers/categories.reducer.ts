@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
-import { ProductsActions } from '../actions/products.actions';
-import { CategoriesState } from 'src/app/models/Category.model';
+import { CategoriesState, Category } from 'src/app/models/Category.model';
+import { CategoriesActions } from '../actions/categories.actions';
 
 export const initialState: CategoriesState = {
   loading: false,
@@ -65,7 +65,35 @@ export const initialState: CategoriesState = {
 
 export const categoriesReducer = createReducer(
   initialState,
-  on(ProductsActions.getProducts, (_state): CategoriesState => {
+  on(CategoriesActions.getCategories, (_state): CategoriesState => {
     return { ..._state, loading: false };
-  })
+  }),
+  on(
+    CategoriesActions.addCategory,
+    (_state, payload: Category): CategoriesState => {
+      return { ..._state, categories: [..._state.categories, payload] };
+    }
+  ),
+  on(
+    CategoriesActions.updateCategory,
+    (_state, payload: Category): CategoriesState => {
+      const categories = [..._state.categories];
+      const categoryIndex = categories.findIndex(
+        (category) => category.id === payload.id
+      );
+      categories[categoryIndex] = payload;
+      return { ..._state, categories };
+    }
+  ),
+  on(
+    CategoriesActions.deleteCategory,
+    (_state, payload: { id: string }): CategoriesState => {
+      return {
+        ..._state,
+        categories: [
+          ..._state.categories.filter((category) => category.id !== payload.id),
+        ],
+      };
+    }
+  )
 );

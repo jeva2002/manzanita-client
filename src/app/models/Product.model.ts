@@ -8,12 +8,12 @@ export interface Product {
   category: string;
 }
 
+export type CreateProductDTO = Omit<Product, 'id'>;
+export type UpdateProductDTO = Omit<Partial<Product>, 'id'>;
+
 export interface ProductsState {
   loading: boolean;
-  products: {
-    clothes: ReadonlyArray<Product>;
-    accesories: ReadonlyArray<Product>;
-  };
+  products: ReadonlyArray<Product>;
 }
 
 export type ProductMiniature = Omit<Product, 'sizes' | 'category' | 'color'>;

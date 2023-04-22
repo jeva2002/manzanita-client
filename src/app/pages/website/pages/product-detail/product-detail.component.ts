@@ -17,19 +17,15 @@ export class ProductDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
-      const productType = params.get('productType');
-      if (productType === 'clothes' || productType === 'accesories') {
-        this.store
-          .select(
-            selectProduct({
-              category: productType,
-              id: params.get('id') ?? '',
-            })
-          )
-          .forEach((product) => {
-            if (product) this.product = { ...product };
-          });
-      }
+      this.store
+        .select(
+          selectProduct({
+            id: params.get('id') ?? '',
+          })
+        )
+        .forEach((product) => {
+          if (product) this.product = { ...product };
+        });
     });
   }
 }

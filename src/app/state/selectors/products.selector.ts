@@ -11,22 +11,19 @@ export const selectProductsList = createSelector(
 
 export const selectClothes = createSelector(
   selectProductsFeature,
-  (state: ProductsState) => state.products.clothes
+  (state: ProductsState) =>
+    state.products.filter((product) => product.category[0] === 'C')
 );
 
 export const selectAccesories = createSelector(
   selectProductsFeature,
-  (state: ProductsState) => state.products.accesories
+  (state: ProductsState) =>
+    state.products.filter((product) => product.category[0] !== 'C')
 );
 
-export const selectProduct = (props: {
-  category: 'clothes' | 'accesories';
-  id: string;
-}) => {
+export const selectProduct = (props: { id: string }) => {
   return createSelector(selectProductsFeature, (state: ProductsState) => {
-    return state.products[props.category].find(
-      (product) => product.id === props.id
-    );
+    return state.products.find((product) => product.id === props.id);
   });
 };
 

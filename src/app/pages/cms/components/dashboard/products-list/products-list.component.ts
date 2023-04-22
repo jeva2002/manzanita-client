@@ -1,7 +1,7 @@
 /* eslint-disable @ngrx/avoid-mapping-selectors */
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable, map } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Product } from 'src/app/models/Product.model';
 import { selectProductsList } from 'src/app/state/selectors/products.selector';
 
@@ -18,17 +18,6 @@ export class ProductsListComponent implements OnInit {
   constructor(private store: Store<any>) {}
 
   ngOnInit(): void {
-    this.products$ = this.store
-      .select(selectProductsList)
-      .pipe(
-        map((products) => [
-          ...products.accesories.map((product) => {
-            return { ...product, category: 'A' + product.category };
-          }),
-          ...products.clothes.map((product) => {
-            return { ...product, category: 'C' + product.category };
-          }),
-        ])
-      );
+    this.products$ = this.store.select(selectProductsList);
   }
 }
