@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Product } from 'src/app/models/Product.model';
+import { ProductsActions } from 'src/app/state/actions/products.actions';
 import { selectProductsList } from 'src/app/state/selectors/products.selector';
 
 @Component({
@@ -19,5 +20,9 @@ export class ProductsListComponent implements OnInit {
 
   ngOnInit(): void {
     this.products$ = this.store.select(selectProductsList);
+  }
+
+  deleteProduct(id: string): void {
+    this.store.dispatch(ProductsActions.deleteProduct({ id }));
   }
 }

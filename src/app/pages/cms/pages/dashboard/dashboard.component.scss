@@ -2,5 +2,14 @@
   display: grid;
   grid-template-columns: 1fr 5fr;
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
+  max-height: fit-content;
+
+  .main {
+    .top-bar {
+      background-color: #3f51b5;
+      height: 52px;
+    }
+
+  }
 }

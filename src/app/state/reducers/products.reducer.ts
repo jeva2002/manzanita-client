@@ -96,7 +96,15 @@ export const productsReducer = createReducer(
       };
     }
   ),
-  on(ProductsActions.getProducts, (_state): ProductsState => {
-    return { ..._state, loading: true };
-  })
+  on(
+    ProductsActions.deleteProduct,
+    (_state, payload: { id: string }): ProductsState => {
+      return {
+        ..._state,
+        products: _state.products.filter(
+          (product) => product.id !== payload.id
+        ),
+      };
+    }
+  )
 );

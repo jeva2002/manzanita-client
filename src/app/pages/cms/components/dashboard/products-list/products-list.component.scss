@@ -1,20 +1,20 @@
-main {
-  height: 100%;
-  overflow-y: auto;
+table {
+  width: 100%;
+}
 
-  .edit, .delete {
-    cursor: pointer;
-  }
+.edit,
+.delete {
+  cursor: pointer;
+}
 
-  .edit {
-    color: #3f51b5;
-    margin-right: 12px;
-    text-decoration: none;
-  }
+.edit {
+  color: #3f51b5;
+  margin-right: 12px;
+  text-decoration: none;
+}
 
-  .delete {
-    color: red;
-    border: none;
-    background-color: transparent;
-  }
+.delete {
+  color: red;
+  border: none;
+  background-color: transparent;
 }
