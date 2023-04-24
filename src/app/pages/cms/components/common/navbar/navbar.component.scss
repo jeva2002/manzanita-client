@@ -1,15 +1,16 @@
 .nav {
+  position: fixed;
   background-color: #3f51b5;
   height: 100%;
+  width: 16.7%;
   padding: 20px ;
 
   .nav-items {
+    margin-top: 60px;
     list-style: none;
-
     display: flex;
     flex-direction: column;
     gap: 12px;
-
 
     a{
       font-size: 20px;

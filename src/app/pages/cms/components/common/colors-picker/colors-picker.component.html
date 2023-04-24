@@ -1,0 +1,22 @@
+<div class="color-picker">
+  <mat-form-field class="input" appearance="fill" floatLabel="always">
+    <mat-label>Colores</mat-label>
+    <input
+      matInput
+      type="color"
+      #colorInput
+      (input)="addColor(colorInput.value)"
+    />
+  </mat-form-field>
+  <div class="badges">
+    <button
+      mat-button
+      *ngFor="let color of colorsList"
+      class="badge"
+      [ngStyle]="{ 'background-color': color }"
+      (click)="removeColor(color)"
+    >
+      {{ color }}
+    </button>
+  </div>
+</div>

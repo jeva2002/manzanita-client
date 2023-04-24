@@ -12,11 +12,9 @@ export class ParseCategoryPipe implements PipeTransform {
   transform(value: string): string {
     let currentCategory = '';
 
-    this.store
-      .select(selectCategoryById(value.slice(1)))
-      .forEach((category) => {
-        currentCategory = category?.name ?? '';
-      });
+    this.store.select(selectCategoryById(value)).forEach((category) => {
+      currentCategory = category?.name ?? '';
+    });
 
     return currentCategory ? currentCategory : value;
   }

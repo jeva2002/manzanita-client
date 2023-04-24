@@ -8,12 +8,17 @@ import { NavbarComponent } from './components/common/navbar/navbar.component';
 import { LoginComponent } from './pages/login/login.component';
 import { LoginFormComponent } from './components/login/login-form/login-form.component';
 import { ProductsListComponent } from './components/dashboard/products-list/products-list.component';
+import { NewProductComponent } from './components/dashboard/new-product/new-product.component';
+
+import { ParseCategoryPipe } from './pipes/parse-category.pipe';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
-import { ParseCategoryPipe } from './pipes/parse-category.pipe';
+import { MatSelectModule } from '@angular/material/select';
+import { ColorsPickerComponent } from './components/common/colors-picker/colors-picker.component';
+import { SizesPickerComponent } from './components/common/sizes-picker/sizes-picker.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +28,9 @@ import { ParseCategoryPipe } from './pipes/parse-category.pipe';
     LoginFormComponent,
     ProductsListComponent,
     ParseCategoryPipe,
+    NewProductComponent,
+    ColorsPickerComponent,
+    SizesPickerComponent,
   ],
   imports: [
     CommonModule,
@@ -32,6 +40,7 @@ import { ParseCategoryPipe } from './pipes/parse-category.pipe';
     MatInputModule,
     MatButtonModule,
     MatTableModule,
+    MatSelectModule,
   ],
 })
 export class CmsModule {}

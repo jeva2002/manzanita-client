@@ -1,0 +1,8 @@
+<mat-form-field class="input" appearance="fill">
+  <mat-label>Tallas</mat-label>
+  <mat-select #select multiple (selectionChange)="setSizes(select.value)">
+    <mat-option *ngFor="let size of sizesList" [value]="size">{{
+      size
+    }}</mat-option>
+  </mat-select>
+</mat-form-field>

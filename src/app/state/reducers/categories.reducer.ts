@@ -6,59 +6,34 @@ export const initialState: CategoriesState = {
   loading: false,
   categories: [
     {
-      id: '1',
+      id: 'C1',
       img: './assets/imgs/boy.jpg',
       name: 'buso',
     },
     {
-      id: '2',
+      id: 'C2',
       img: './assets/imgs/boy.jpg',
       name: 'buso',
     },
     {
-      id: '3',
+      id: 'C3',
+      img: './assets/imgs/boy.jpg',
+      name: 'buso',
+    },
+    {
+      id: 'A1',
       img: './assets/imgs/accesory.jpg',
-      name: 'buso',
+      name: 'Otro',
     },
     {
-      id: '4',
-      img: './assets/imgs/boy.jpg',
-      name: 'buso',
-    },
-    {
-      id: '5',
+      id: 'A2',
       img: './assets/imgs/accesory.jpg',
-      name: 'buso',
+      name: 'Algo',
     },
     {
-      id: '6',
-      img: './assets/imgs/boy.jpg',
-      name: 'buso',
-    },
-    {
-      id: '7',
+      id: 'A3',
       img: './assets/imgs/accesory.jpg',
-      name: 'buso',
-    },
-    {
-      id: '8',
-      img: './assets/imgs/boy.jpg',
-      name: 'buso',
-    },
-    {
-      id: '9',
-      img: './assets/imgs/accesory.jpg',
-      name: 'buso',
-    },
-    {
-      id: '10',
-      img: './assets/imgs/boy.jpg',
-      name: 'buso',
-    },
-    {
-      id: '11',
-      img: './assets/imgs/accesory.jpg',
-      name: 'buso',
+      name: 'Algo',
     },
   ],
 };
