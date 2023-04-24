@@ -17,11 +17,7 @@
     <ng-container matColumnDef="options">
       <th mat-header-cell *matHeaderCellDef>Opciones</th>
       <td mat-cell *matCellDef="let product">
-        <a
-          [routerLink]="
-            '/cms/dashboard/update/' + product.category[0] + '-' + product.id
-          "
-          class="edit"
+        <a [routerLink]="'/cms/dashboard/update/' + product.id" class="edit"
           >Editar</a
         >
         <button class="delete" (click)="deleteProduct(product.id)">

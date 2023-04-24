@@ -85,7 +85,7 @@ export const productsReducer = createReducer(
   on(
     ProductsActions.updateProduct,
     (_state, payload: Product): ProductsState => {
-      const products = _state.products as Product[];
+      const products = [..._state.products] as Product[];
 
       const index = products.findIndex((product) => product.id === payload.id);
       products[index] = payload;

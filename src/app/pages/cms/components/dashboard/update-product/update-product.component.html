@@ -1,0 +1,46 @@
+<main>
+  <h1>Actualiza el producto con el id: {{ productId }}</h1>
+  <form [formGroup]="form" (submit)="onSubmit()">
+    <div class="first group">
+      <mat-form-field class="input" appearance="fill">
+        <mat-label>Nombre del producto</mat-label>
+        <input matInput formControlName="name" />
+      </mat-form-field>
+      <mat-form-field class="input" appearance="fill" floatLabel="always">
+        <mat-label>Precio</mat-label>
+        <input matInput type="number" formControlName="price" />
+        <span matTextPrefix>$&nbsp;</span>
+      </mat-form-field>
+    </div>
+    <div class="second group">
+      <mat-form-field appearance="fill" class="input">
+        <mat-label>Categoría</mat-label>
+        <mat-select
+          *ngIf="categories$ | async as categories"
+          formControlName="category"
+        >
+          <mat-option *ngFor="let category of categories" [value]="category.id">
+            {{ category.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="input" appearance="fill">
+        <mat-label>Imagen</mat-label>
+        <input matInput formControlName="img" />
+      </mat-form-field>
+    </div>
+    <div class="third group">
+      <app-colors-picker formControlName="color" />
+      <app-sizes-picker formControlName="sizes" />
+    </div>
+    <button
+      class="submit-button"
+      mat-flat-button
+      color="primary"
+      appareance="fill"
+      type="submit"
+    >
+      Actualizar
+    </button>
+  </form>
+</main>

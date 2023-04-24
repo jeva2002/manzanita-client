@@ -24,7 +24,7 @@ export class ColorsPickerComponent implements ControlValueAccessor {
   isDisabled = false;
 
   writeValue(value: string[]): void {
-    if (value) this.colorsList = value;
+    if (value) this.colorsList = [...value];
   }
 
   registerOnChange(fn: any): void {

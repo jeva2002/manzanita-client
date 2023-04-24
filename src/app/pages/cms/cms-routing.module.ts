@@ -5,6 +5,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { authGuard } from './guards/auth.guard';
 import { ProductsListComponent } from './components/dashboard/products-list/products-list.component';
 import { NewProductComponent } from './components/dashboard/new-product/new-product.component';
+import { UpdateProductComponent } from './components/dashboard/update-product/update-product.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -13,8 +14,9 @@ const routes: Routes = [
     component: DashboardComponent,
     canActivate: [authGuard],
     children: [
-      { path: 'products-list', component: ProductsListComponent },
+      { path: 'update/:id', component: UpdateProductComponent },
       { path: 'new-product', component: NewProductComponent },
+      { path: 'products-list', component: ProductsListComponent },
       { path: '', redirectTo: 'products-list', pathMatch: 'full' },
     ],
   },

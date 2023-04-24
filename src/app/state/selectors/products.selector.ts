@@ -9,6 +9,12 @@ export const selectProductsList = createSelector(
   (state: ProductsState) => state.products
 );
 
+export const selectProductById = (id: string) => {
+  return createSelector(selectProductsFeature, (state: ProductsState) =>
+    state.products.find((product) => product.id === id)
+  );
+};
+
 export const selectClothes = createSelector(
   selectProductsFeature,
   (state: ProductsState) =>

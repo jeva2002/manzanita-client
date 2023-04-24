@@ -14,6 +14,14 @@ import { selectCategoriesList } from 'src/app/state/selectors/categories.selecto
 })
 export class NewProductComponent implements OnInit {
   categories$ = new Observable<Category[]>();
+  form = this.builder.nonNullable.group({
+    name: ['', [Validators.required]],
+    price: [0, [Validators.required, Validators.min(1000)]],
+    color: [[], [Validators.required, Validators.minLength(1)]],
+    sizes: [[], [Validators.required, Validators.minLength(1)]],
+    category: ['', [Validators.required]],
+    img: ['', [Validators.required]],
+  });
 
   // eslint-disable-next-line @ngrx/no-typed-global-store, @typescript-eslint/no-explicit-any
   constructor(private builder: FormBuilder, private store: Store<any>) {}
@@ -22,37 +30,17 @@ export class NewProductComponent implements OnInit {
     this.categories$ = this.store.select(selectCategoriesList);
   }
 
-  form = this.builder.nonNullable.group({
-    name: ['', [Validators.required]],
-    price: [0, [Validators.required, Validators.min(1000)]],
-    color: [[], [Validators.required]],
-    sizes: [[], [Validators.required]],
-    category: ['', [Validators.required]],
-    img: ['', [Validators.required]],
-  });
-
   onSubmit(): void {
     if (this.form.valid) {
-      console.log(this.form.value);
-
       this.store.dispatch(
         ProductsActions.addProduct({
           ...this.form.value,
           id: '135',
         } as unknown as Product)
       );
-      // this.form.reset();
+      this.form.reset();
     } else {
-      console.log(this.form);
+      console.log(this.form.errors);
     }
-    // const newProduct: Product = {
-    //   id: 'dsadsa',
-    //   category: productType ?? '' + reference ?? '',
-    //   img: '',
-    //   color: color.value,
-    //   name: name.value,
-    //   price: `${price.value}`,
-    //   sizes: sizes.value,
-    // };
   }
 }

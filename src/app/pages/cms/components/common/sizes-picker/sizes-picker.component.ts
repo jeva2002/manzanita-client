@@ -17,12 +17,12 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 })
 export class SizesPickerComponent implements ControlValueAccessor {
   sizesList: string[] = [
-    '0-3 m',
-    '3-6 m',
-    '6-9 m',
-    '9-12 m',
-    '1 - 2 a',
-    '2+ a',
+    '0-3 meses',
+    '3-6 meses',
+    '6-9 meses',
+    '9-12 meses',
+    '1-2 años',
+    '2+ años',
   ];
   selectedSizes: string[] = [];
 
@@ -32,7 +32,9 @@ export class SizesPickerComponent implements ControlValueAccessor {
   isDisabled = false;
 
   writeValue(value: string[]): void {
-    if (value) this.selectedSizes = value;
+    if (value) {
+      this.selectedSizes = value;
+    }
   }
 
   registerOnChange(fn: any): void {
@@ -49,7 +51,6 @@ export class SizesPickerComponent implements ControlValueAccessor {
 
   setSizes(sizes: string[]): void {
     this.selectedSizes = sizes;
-    this.onTouch();
     this.onChange(this.selectedSizes);
   }
 }
