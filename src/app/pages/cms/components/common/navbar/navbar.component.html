@@ -1,25 +1,55 @@
-<nav class="nav">
-  <menu class="nav-items">
-    <li>
-      <a routerLinkActive="active" routerLink="/cms/dashboard/products-list"
-        >Lista de productos</a
-      >
-    </li>
-    <li>
-      <a routerLinkActive="active" routerLink="/cms/dashboard/new-product"
-        >Crear producto</a
-      >
-    </li>
-    <li>
-      <a routerLinkActive="active" routerLink="/cms/dashboard/new-category"
-        >Crear categoría</a
-      >
-    </li>
-    <li>
-      <a routerLinkActive="active" routerLink="/cms/dashboard/update-category"
-        >Modificar categoría</a
-      >
-    </li>
-    <li><a tabindex="0" (click)="signOff()">Salir</a></li>
-  </menu>
-</nav>
+<div class="nav">
+  <nav class="nav-expanded">
+    <menu class="nav-items">
+      <li>
+        <a routerLinkActive="active" routerLink="/cms/dashboard/products-list"
+          >Lista de productos</a
+        >
+      </li>
+      <li>
+        <a routerLinkActive="active" routerLink="/cms/dashboard/new-product"
+          >Crear producto</a
+        >
+      </li>
+      <li>
+        <a routerLinkActive="active" routerLink="/cms/dashboard/new-category"
+          >Crear categoría</a
+        >
+      </li>
+      <li>
+        <a routerLinkActive="active" routerLink="/cms/dashboard/update-category"
+          >Modificar categoría</a
+        >
+      </li>
+      <li><a tabindex="0" (click)="signOff()">Salir</a></li>
+    </menu>
+  </nav>
+  <nav class="nav-collapse">
+    <div class="top-bar-nav">
+      <img src="assets/icons/menu.svg" (click)="toggleBar()" />
+    </div>
+    <menu class="nav-items" [class.active-bar]="isActive">
+      <li>
+        <a routerLinkActive="active" routerLink="/cms/dashboard/products-list"
+          >Lista de productos</a
+        >
+      </li>
+      <li>
+        <a routerLinkActive="active" routerLink="/cms/dashboard/new-product"
+          >Crear producto</a
+        >
+      </li>
+      <li>
+        <a routerLinkActive="active" routerLink="/cms/dashboard/new-category"
+          >Crear categoría</a
+        >
+      </li>
+      <li>
+        <a routerLinkActive="active" routerLink="/cms/dashboard/update-category"
+          >Modificar categoría</a
+        >
+      </li>
+      <li><a tabindex="0" (click)="signOff()">Salir</a></li>
+    </menu>
+  </nav>
+</div>

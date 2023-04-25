@@ -1,9 +1,11 @@
 .nav {
-  position: fixed;
-  background-color: #3f51b5;
-  height: 100%;
-  width: 16.7%;
-  padding: 20px ;
+  .nav-expanded {
+    position: fixed;
+    background-color: #3f51b5;
+    height: 100%;
+    width: 16.7%;
+    padding: 20px;
+  }
 
   .nav-items {
     margin-top: 60px;
@@ -12,7 +14,7 @@
     flex-direction: column;
     gap: 12px;
 
-    a{
+    a {
       font-size: 20px;
       color: white;
       text-decoration: none;
@@ -26,5 +28,67 @@
     .active {
       color: black;
     }
+  }
+
+  .nav-collapse {
+    display: none;
+  }
+}
+
+@media (max-width: 1075px) {
+  .nav {
+    .nav-expanded {
+      display: none;
+    }
+    .nav-collapse {
+      display: block;
+      position: relative;
+
+      .top-bar-nav {
+        background-color: #3f51b5;
+        height: 52px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding-right: 12px;
+
+        img {
+          width: 42px;
+          filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(268deg)
+            brightness(101%) contrast(106%);
+        }
+      }
+
+      .nav-items {
+        position: absolute;
+        left: -100%;
+        background-color: #3f51b5;
+        margin-top: 0;
+      }
+
+      .active-bar {
+        animation: slide-in 1s ease;
+        margin-top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 20;
+        align-items: center;
+        padding-top: 40px;
+
+        li {
+          z-index: 30;
+        }
+      }
+    }
+  }
+}
+
+@keyframes slide-in {
+  from {
+    translate: -100vh;
+  }
+  to {
+    translate: 0;
   }
 }

@@ -40,3 +40,28 @@ main {
     }
   }
 }
+
+@media (max-width: 1075px) {
+  main {
+    min-height: 90vh;
+    padding: 40px 0;
+    form {
+      width: 100%;
+
+      .group {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .third {
+        flex-direction: column-reverse;
+      }
+
+      .submit-button {
+        margin-top: 6px;
+        width: 300px;
+      }
+    }
+  }
+}

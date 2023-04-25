@@ -9,8 +9,14 @@ import { adminActions } from 'src/app/state/actions/admin.actions';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent {
+  isActive = false;
+
   // eslint-disable-next-line @ngrx/no-typed-global-store, @typescript-eslint/no-explicit-any
   constructor(private store: Store<any>, private router: Router) {}
+
+  toggleBar() {
+    this.isActive = !this.isActive;
+  }
 
   signOff() {
     this.store.dispatch(adminActions.setAuthorization({ token: '' }));
