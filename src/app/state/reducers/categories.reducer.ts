@@ -1,6 +1,7 @@
 import { createReducer, on } from '@ngrx/store';
 import {
   CategoriesState,
+  Category,
   CreateCategoryDTO,
   UpdateCategoryDTO,
 } from 'src/app/models/Category.model';
@@ -78,8 +79,10 @@ export const categoriesReducer = createReducer(
 
       categories[categoryIndex] = {
         ...categories[categoryIndex],
-        ...payload,
-      };
+        ...Object.fromEntries(
+          Object.entries(payload).filter(([, value]) => !!value)
+        ),
+      } as Category;
       return { ..._state, categories };
     }
   ),
