@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Observable, map } from 'rxjs';
+import { Observable, map, take } from 'rxjs';
 import { Product } from 'src/app/models/Product.model';
 import {
   selectAccesories,
@@ -35,7 +35,10 @@ export class ProductsComponent implements OnInit {
 
   getAvalaibleColors() {
     this.products$
-      .pipe(map((project) => project.map((product) => product.color)))
+      .pipe(
+        map((project) => project.map((product) => product.color)),
+        take(2)
+      )
       .subscribe((list) => {
         const differentColors = new Set(list.flat());
         this.avalaibleColors = [...differentColors];
@@ -43,7 +46,7 @@ export class ProductsComponent implements OnInit {
   }
 
   getCategories() {
-    this.products$.forEach((products) => {
+    this.products$.pipe(take(2)).forEach((products) => {
       const categories = new Set(products.map((product) => product.category));
       this.categories = [...categories];
     });

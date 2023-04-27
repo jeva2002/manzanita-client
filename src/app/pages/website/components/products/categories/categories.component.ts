@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { Category } from 'src/app/models/Category.model';
 import { FiltersService } from 'src/app/shared/services/filters.service';
 import { selectCategoriesList } from 'src/app/state/selectors/categories.selector';
+import { take } from 'rxjs';
 
 @Component({
   selector: 'app-products-categories',
@@ -12,7 +13,7 @@ import { selectCategoriesList } from 'src/app/state/selectors/categories.selecto
 export class CategoriesComponent implements OnInit, OnChanges {
   categories: Category[] = [];
   currentCategory = '';
-  carouselWidth = 'repeat(6, 1fr)'
+  carouselWidth = 'repeat(6, 1fr)';
 
   @Input() categoriesByProducts: string[] = [];
 
@@ -27,8 +28,8 @@ export class CategoriesComponent implements OnInit, OnChanges {
 
   ngOnChanges(): void {
     this.getCategories();
-    if(this.categories.length < 6){
-      this.carouselWidth = `repeat(${this.categories.length}, 1fr)`
+    if (this.categories.length < 6) {
+      this.carouselWidth = `repeat(${this.categories.length}, 1fr)`;
     }
   }
 
@@ -51,12 +52,19 @@ export class CategoriesComponent implements OnInit, OnChanges {
   }
 
   getCategories() {
-    this.store.select(selectCategoriesList).forEach((categories) => {
-      this.categories = [];
-      categories.forEach((category) => {
-        if (this.categoriesByProducts.find((item) => item === category.id))
-          this.categories.push(category);
+    this.store
+      .select(selectCategoriesList)
+      .pipe(take(2))
+      .forEach((categories) => {
+        this.categories = [];
+        categories.forEach((category) => {
+          if (
+            this.categoriesByProducts.find(
+              (item) => item === category.productType + category.id
+            )
+          )
+            this.categories.push(category);
+        });
       });
-    });
   }
 }

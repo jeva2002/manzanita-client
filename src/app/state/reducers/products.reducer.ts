@@ -35,7 +35,7 @@ export const initialState: ProductsState = {
       name: 'mameluco',
       price: '5000',
       sizes: ['1 mes'],
-      category: 'A1',
+      category: 'A5',
     },
     {
       id: '4',
@@ -71,7 +71,7 @@ export const initialState: ProductsState = {
       name: 'mameluco',
       price: '150500',
       sizes: ['1 mes'],
-      category: 'A3',
+      category: 'A4',
     },
   ],
 };

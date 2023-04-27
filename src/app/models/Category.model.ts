@@ -2,9 +2,11 @@ export interface Category {
   id: string;
   img: string;
   name: string;
+  productType: string;
 }
 
 export type CreateCategoryDTO = Omit<Category, 'id'>;
+
 export interface UpdateCategoryDTO extends Omit<Partial<Category>, 'id'> {
   id: string;
 }

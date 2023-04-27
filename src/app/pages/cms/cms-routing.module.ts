@@ -7,6 +7,7 @@ import { ProductsListComponent } from './components/dashboard/products-list/prod
 import { NewProductComponent } from './components/dashboard/new-product/new-product.component';
 import { UpdateProductComponent } from './components/dashboard/update-product/update-product.component';
 import { NewCategoryComponent } from './components/dashboard/new-category/new-category.component';
+import { UpdateCategoryComponent } from './components/dashboard/update-category/update-category.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -16,6 +17,7 @@ const routes: Routes = [
     canActivate: [authGuard],
     children: [
       { path: 'update/:id', component: UpdateProductComponent },
+      { path: 'update-category', component: UpdateCategoryComponent },
       { path: 'new-category', component: NewCategoryComponent },
       { path: 'new-product', component: NewProductComponent },
       { path: 'products-list', component: ProductsListComponent },

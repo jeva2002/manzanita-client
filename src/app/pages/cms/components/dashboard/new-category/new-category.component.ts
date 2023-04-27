@@ -20,12 +20,13 @@ export class NewCategoryComponent {
 
   onSubmit() {
     const { productType, category, img } = this.form.value;
-    const newCategory: string = (productType ?? '') + (category ?? '');
+    const name: string = category ?? '';
 
     this.store.dispatch(
       CategoriesActions.addCategory({
-        name: newCategory,
+        name: name,
         img: img ?? '',
+        productType: productType ?? '',
       })
     );
   }

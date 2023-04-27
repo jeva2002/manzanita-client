@@ -6,12 +6,12 @@
   >
     <li
       *ngFor="let category of categories"
-      [class.active]="currentCategory === category.id"
+      [class.active]="currentCategory === category.productType + category.id"
     >
       <button
         class="close"
         type="menu"
-        *ngIf="currentCategory === category.id"
+        *ngIf="currentCategory === category.productType + category.id"
         (click)="setFilter('')"
       >
         X
@@ -22,7 +22,7 @@
       <img
         [src]="category.img"
         [alt]="category.name"
-        (click)="setFilter(category.id)"
+        (click)="setFilter(category.productType + category.id)"
       />
     </li>
   </menu>

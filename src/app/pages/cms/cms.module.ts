@@ -21,6 +21,7 @@ import { ColorsPickerComponent } from './components/common/colors-picker/colors-
 import { SizesPickerComponent } from './components/common/sizes-picker/sizes-picker.component';
 import { UpdateProductComponent } from './components/dashboard/update-product/update-product.component';
 import { NewCategoryComponent } from './components/dashboard/new-category/new-category.component';
+import { UpdateCategoryComponent } from './components/dashboard/update-category/update-category.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { NewCategoryComponent } from './components/dashboard/new-category/new-ca
     SizesPickerComponent,
     UpdateProductComponent,
     NewCategoryComponent,
+    UpdateCategoryComponent,
   ],
   imports: [
     CommonModule,

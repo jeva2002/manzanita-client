@@ -18,16 +18,18 @@ export class FiltersService {
 
   applyFiltersProductsList(productsList: readonly Product[]): Product[] {
     const filters = this.productsFilters$.getValue();
-    return productsList.filter((product) => {
-      let flag = true;
-      if (!!filters.category && product.category !== filters.category) {
-        flag = false;
-      }
-      if (filters.color) {
-        flag = product.color.some((color) => color === filters.color);
-      }
-      return flag;
-    });
+    return productsList
+      .filter(
+        (product) =>
+          (!!filters.category && product.category === filters.category) ||
+          !filters.category
+      )
+      .filter(
+        (product) =>
+          (!!filters.color &&
+            product.color.find((color) => filters.color === color)) ||
+          !filters.color
+      );
   }
 
   modifyFilters(value: string, targetFilter: 'color' | 'category') {

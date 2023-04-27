@@ -1,8 +1,8 @@
 import { createReducer, on } from '@ngrx/store';
 import {
   CategoriesState,
-  Category,
   CreateCategoryDTO,
+  UpdateCategoryDTO,
 } from 'src/app/models/Category.model';
 import { CategoriesActions } from '../actions/categories.actions';
 
@@ -10,34 +10,40 @@ export const initialState: CategoriesState = {
   loading: false,
   categories: [
     {
-      id: 'C1',
+      id: '1',
       img: './assets/imgs/boy.jpg',
       name: 'buso',
+      productType: 'C',
     },
     {
-      id: 'C2',
+      id: '2',
       img: './assets/imgs/boy.jpg',
       name: 'buso',
+      productType: 'C',
     },
     {
-      id: 'C3',
+      id: '3',
       img: './assets/imgs/boy.jpg',
       name: 'buso',
+      productType: 'C',
     },
     {
-      id: 'A1',
+      id: '4',
       img: './assets/imgs/accesory.jpg',
       name: 'Otro',
+      productType: 'A',
     },
     {
-      id: 'A2',
+      id: '5',
       img: './assets/imgs/accesory.jpg',
       name: 'Algo',
+      productType: 'A',
     },
     {
-      id: 'A3',
+      id: '6',
       img: './assets/imgs/accesory.jpg',
       name: 'Algo',
+      productType: 'A',
     },
   ],
 };
@@ -50,24 +56,30 @@ export const categoriesReducer = createReducer(
   on(
     CategoriesActions.addCategory,
     (_state, payload: CreateCategoryDTO): CategoriesState => {
-      console.log(payload);
       return {
         ..._state,
         categories: [
           ..._state.categories,
-          { name: payload.name, img: payload.img, id: '151315' },
+          {
+            id: '151315',
+            ...payload,
+          },
         ],
       };
     }
   ),
   on(
     CategoriesActions.updateCategory,
-    (_state, payload: Category): CategoriesState => {
+    (_state, payload: UpdateCategoryDTO): CategoriesState => {
       const categories = [..._state.categories];
       const categoryIndex = categories.findIndex(
         (category) => category.id === payload.id
       );
-      categories[categoryIndex] = payload;
+
+      categories[categoryIndex] = {
+        ...categories[categoryIndex],
+        ...payload,
+      };
       return { ..._state, categories };
     }
   ),

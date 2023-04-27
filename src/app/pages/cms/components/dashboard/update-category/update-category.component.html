@@ -1,0 +1,38 @@
+<main>
+  <h1>Crea una categoría</h1>
+  <form [formGroup]="form" (submit)="onSubmit()">
+    <div class="group">
+      <mat-form-field class="input" appearance="fill">
+        <mat-label>Categoría a modificar</mat-label>
+        <mat-select
+          *ngIf="categories$ | async as categories"
+          formControlName="categoryId"
+        >
+          <mat-option *ngFor="let category of categories" [value]="category.id"
+            >{{ category.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="group category">
+      <mat-form-field class="type-input" appearance="fill">
+        <mat-label>Tipo</mat-label>
+        <mat-select formControlName="productType">
+          <mat-option value="C"> Prenda </mat-option>
+          <mat-option value="A"> Accesorio </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="input" appearance="fill">
+        <mat-label>Categoría</mat-label>
+        <input matInput formControlName="category" />
+      </mat-form-field>
+    </div>
+    <div class="group">
+      <mat-form-field class="input" appearance="fill">
+        <mat-label>Imágen</mat-label>
+        <input matInput formControlName="img" />
+      </mat-form-field>
+    </div>
+    <button type="submit" mat-flat-button color="primary">Crear</button>
+  </form>
+</main>
