@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { Observable, take } from 'rxjs';
 import { Category } from 'src/app/models/Category.model';
-import { Product } from 'src/app/models/Product.model';
+import { UpdateProductDTO } from 'src/app/models/Product.model';
 import { ProductsActions } from 'src/app/state/actions/products.actions';
 import { selectCategoriesList } from 'src/app/state/selectors/categories.selector';
 import { selectProductById } from 'src/app/state/selectors/products.selector';
@@ -42,6 +42,7 @@ export class UpdateProductComponent implements OnInit {
       this.productId = param.get('id') ?? '';
       this.store
         .select(selectProductById(this.productId))
+        .pipe(take(2))
         .forEach((product) => {
           if (product) {
             // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -61,7 +62,7 @@ export class UpdateProductComponent implements OnInit {
         ProductsActions.updateProduct({
           ...this.form.value,
           id: this.productId,
-        } as unknown as Product)
+        } as UpdateProductDTO)
       );
     } else {
       console.log(this.form.errors);

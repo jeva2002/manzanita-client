@@ -23,8 +23,8 @@
 
 @media (max-width: 1075px) {
   .layout {
-    grid-template-columns: 1fr;
-    grid-auto-rows: auto;
+    display: flex;
+    flex-direction: column;
 
     .main {
       .top-bar {

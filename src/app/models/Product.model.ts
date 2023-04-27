@@ -9,7 +9,10 @@ export interface Product {
 }
 
 export type CreateProductDTO = Omit<Product, 'id'>;
-export type UpdateProductDTO = Omit<Partial<Product>, 'id'>;
+
+export interface UpdateProductDTO extends Partial<Omit<Product, 'id'>> {
+  id: string;
+}
 
 export interface ProductsState {
   loading: boolean;

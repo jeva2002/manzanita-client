@@ -20,6 +20,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { ColorsPickerComponent } from './components/common/colors-picker/colors-picker.component';
 import { SizesPickerComponent } from './components/common/sizes-picker/sizes-picker.component';
 import { UpdateProductComponent } from './components/dashboard/update-product/update-product.component';
+import { NewCategoryComponent } from './components/dashboard/new-category/new-category.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { UpdateProductComponent } from './components/dashboard/update-product/up
     ColorsPickerComponent,
     SizesPickerComponent,
     UpdateProductComponent,
+    NewCategoryComponent,
   ],
   imports: [
     CommonModule,

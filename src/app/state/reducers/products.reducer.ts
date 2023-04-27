@@ -1,5 +1,10 @@
 import { createReducer, on } from '@ngrx/store';
-import { Product, ProductsState } from 'src/app/models/Product.model';
+import {
+  CreateProductDTO,
+  Product,
+  ProductsState,
+  UpdateProductDTO,
+} from 'src/app/models/Product.model';
 import { ProductsActions } from '../actions/products.actions';
 
 export const initialState: ProductsState = {
@@ -76,19 +81,30 @@ export const productsReducer = createReducer(
   on(ProductsActions.getProducts, (_state): ProductsState => {
     return { ..._state, loading: true };
   }),
-  on(ProductsActions.addProduct, (_state, payload: Product): ProductsState => {
-    return {
-      ..._state,
-      products: [..._state.products, payload],
-    };
-  }),
+  on(
+    ProductsActions.addProduct,
+    (_state, payload: CreateProductDTO): ProductsState => {
+      return {
+        ..._state,
+        products: [..._state.products, { ...payload, id: '1516' }],
+      };
+    }
+  ),
   on(
     ProductsActions.updateProduct,
-    (_state, payload: Product): ProductsState => {
+    (_state, payload: UpdateProductDTO): ProductsState => {
       const products = [..._state.products] as Product[];
 
       const index = products.findIndex((product) => product.id === payload.id);
-      products[index] = payload;
+      products[index] = {
+        id: products[index].id,
+        category: payload.category ?? products[index].category,
+        color: payload.color ?? products[index].color,
+        img: payload.img ?? products[index].img,
+        name: payload.name ?? products[index].name,
+        price: payload.price ?? products[index].price,
+        sizes: payload.sizes ?? products[index].sizes,
+      };
 
       return {
         ..._state,

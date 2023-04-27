@@ -1,5 +1,9 @@
 import { createReducer, on } from '@ngrx/store';
-import { CategoriesState, Category } from 'src/app/models/Category.model';
+import {
+  CategoriesState,
+  Category,
+  CreateCategoryDTO,
+} from 'src/app/models/Category.model';
 import { CategoriesActions } from '../actions/categories.actions';
 
 export const initialState: CategoriesState = {
@@ -45,8 +49,15 @@ export const categoriesReducer = createReducer(
   }),
   on(
     CategoriesActions.addCategory,
-    (_state, payload: Category): CategoriesState => {
-      return { ..._state, categories: [..._state.categories, payload] };
+    (_state, payload: CreateCategoryDTO): CategoriesState => {
+      console.log(payload);
+      return {
+        ..._state,
+        categories: [
+          ..._state.categories,
+          { name: payload.name, img: payload.img, id: '151315' },
+        ],
+      };
     }
   ),
   on(
