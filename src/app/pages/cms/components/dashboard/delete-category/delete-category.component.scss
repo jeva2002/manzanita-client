@@ -1,0 +1,36 @@
+main {
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  h1 {
+    font-size: 32px;
+    margin-bottom: 40px;
+    font-weight: bold;
+  }
+
+  div {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    align-items: flex-start;
+    gap: 10px;
+
+    button {
+      height: 42px;
+      margin-top: 8px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  main {
+    padding: 50px;
+
+    h1 {
+      text-align: center;
+    }
+  }
+}

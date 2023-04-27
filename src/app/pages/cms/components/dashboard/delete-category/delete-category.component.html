@@ -1,0 +1,19 @@
+<main>
+  <h1>Eliminar categoría</h1>
+  <div>
+    <mat-form-field class="input" appearance="fill">
+      <mat-label>Tipo</mat-label>
+      <mat-select
+        *ngIf="categories$ | async as categories"
+        [formControl]="targetCategory"
+      >
+        <mat-option *ngFor="let category of categories" [value]="category.id">{{
+          category.name
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button (click)="onSubmit()" mat-flat-button color="primary">
+      Eliminar
+    </button>
+  </div>
+</main>

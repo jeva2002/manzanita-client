@@ -22,6 +22,7 @@ import { SizesPickerComponent } from './components/common/sizes-picker/sizes-pic
 import { UpdateProductComponent } from './components/dashboard/update-product/update-product.component';
 import { NewCategoryComponent } from './components/dashboard/new-category/new-category.component';
 import { UpdateCategoryComponent } from './components/dashboard/update-category/update-category.component';
+import { DeleteCategoryComponent } from './components/dashboard/delete-category/delete-category.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { UpdateCategoryComponent } from './components/dashboard/update-category/
     UpdateProductComponent,
     NewCategoryComponent,
     UpdateCategoryComponent,
+    DeleteCategoryComponent,
   ],
   imports: [
     CommonModule,
