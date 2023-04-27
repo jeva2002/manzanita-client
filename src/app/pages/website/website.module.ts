@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 
 import { WebsiteRoutingModule } from './website-routing.module';
 import { HomeComponent } from './pages/home/home.component';
@@ -31,6 +31,6 @@ import { DetailComponent } from './components/product-detail/detail/detail.compo
     ProductDetailComponent,
     DetailComponent,
   ],
-  imports: [CommonModule, WebsiteRoutingModule, SharedModule],
+  imports: [CommonModule, WebsiteRoutingModule, SharedModule, NgOptimizedImage],
 })
 export class WebsiteModule {}

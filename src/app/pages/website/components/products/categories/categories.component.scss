@@ -99,9 +99,12 @@ header {
   header {
     gap: 10px;
     .categories {
-      grid-template-columns: 1fr;
       justify-content: center;
       width: 150px;
+    }
+
+    #categories {
+      grid-template-columns: 1fr !important;
     }
   }
 }

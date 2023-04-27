@@ -1,6 +1,7 @@
 <header *ngIf="categories.length > 0">
   <button class="control" (click)="pushCarousel()" type="button"><</button>
   <menu
+    id="categories"
     class="categories"
     [ngStyle]="{ 'grid-template-columns': carouselWidth }"
   >
@@ -16,7 +17,7 @@
       >
         X
       </button>
-      <div (click)="setFilter(category.id)">
+      <div (click)="setFilter(category.productType + category.id)">
         <button type="button">{{ category.name | uppercase }}</button>
       </div>
       <img

@@ -97,13 +97,10 @@ export const productsReducer = createReducer(
 
       const index = products.findIndex((product) => product.id === payload.id);
       products[index] = {
-        id: products[index].id,
-        category: payload.category ?? products[index].category,
-        color: payload.color ?? products[index].color,
-        img: payload.img ?? products[index].img,
-        name: payload.name ?? products[index].name,
-        price: payload.price ?? products[index].price,
-        sizes: payload.sizes ?? products[index].sizes,
+        ...products[index],
+        ...Object.fromEntries(
+          Object.entries(payload).filter(([, value]) => !!value)
+        ),
       };
 
       return {
