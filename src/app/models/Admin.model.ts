@@ -1,8 +1,9 @@
-export interface LoginValues {
+export interface AdminState {
+  authToken: string;
+}
+
+export interface Credentials {
   email: string;
   password: string;
 }
 
-export interface AdminState {
-  authToken: string;
-}

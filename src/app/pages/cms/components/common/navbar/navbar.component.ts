@@ -19,7 +19,7 @@ export class NavbarComponent {
   }
 
   signOff() {
-    this.store.dispatch(adminActions.setAuthorization({ token: '' }));
+    this.store.dispatch(adminActions.setAuthtoken({ token: '' }));
     this.router.navigate(['cms']);
   }
 }

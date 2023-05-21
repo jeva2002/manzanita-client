@@ -3,12 +3,13 @@ import { adminActions } from '../actions/admin.actions';
 import { createReducer, on } from '@ngrx/store';
 
 const initialState: AdminState = {
-  authToken: 'dsadsa',
+  authToken: '',
 };
 
 export const adminReducer = createReducer(
   initialState,
-  on(adminActions.setAuthorization, (_state, payload): AdminState => {
+
+  on(adminActions.setAuthtoken, (_state, payload): AdminState => {
     return { authToken: payload.token };
   })
 );

@@ -1,8 +1,10 @@
 import { createActionGroup, props } from '@ngrx/store';
+import { Credentials } from 'src/app/models/Admin.model';
 
 export const adminActions = createActionGroup({
   source: 'Admin',
   events: {
-    'Set Authorization': props<{ token: string }>(),
+    'Login': props<{ credentials: Credentials }>(),
+    'Set AuthToken': props<{ token: string }>(),
   },
 });
