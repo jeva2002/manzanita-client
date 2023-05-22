@@ -7,3 +7,6 @@ export interface Credentials {
   password: string;
 }
 
+export interface AuthToken {
+  token: string;
+}

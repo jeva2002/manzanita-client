@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { Subscription } from 'rxjs';
 import { adminActions } from 'src/app/state/actions/admin.actions';
 import { selectAuthorizationToken } from 'src/app/state/selectors/admin.selector';
 
@@ -10,7 +11,9 @@ import { selectAuthorizationToken } from 'src/app/state/selectors/admin.selector
   templateUrl: './login-form.component.html',
   styleUrls: ['./login-form.component.scss'],
 })
-export class LoginFormComponent implements OnInit {
+export class LoginFormComponent implements OnInit, OnDestroy {
+  authorization$!: Subscription;
+
   constructor(
     private builder: FormBuilder,
     // eslint-disable-next-line @ngrx/no-typed-global-store, @typescript-eslint/no-explicit-any
@@ -19,10 +22,12 @@ export class LoginFormComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // eslint-disable-next-line @ngrx/no-store-subscription
-    this.store.select(selectAuthorizationToken).subscribe((authToken) => {
-      if (authToken) this.router.navigate(['cms', 'dashboard']);
-    });
+    this.authorization$ = this.store
+      .select(selectAuthorizationToken)
+      // eslint-disable-next-line @ngrx/no-store-subscription
+      .subscribe((authToken) => {
+        if (authToken) this.router.navigate(['cms', 'dashboard']);
+      });
   }
 
   loginForm = this.builder.nonNullable.group({
@@ -41,5 +46,9 @@ export class LoginFormComponent implements OnInit {
         })
       );
     }
+  }
+
+  ngOnDestroy(): void {
+    this.authorization$.unsubscribe();
   }
 }

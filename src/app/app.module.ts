@@ -1,6 +1,6 @@
 import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 
@@ -12,7 +12,10 @@ import { AppComponent } from './app.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { ROOT_REDUCERS } from './state/app.state';
 
+import { CookieService } from 'ngx-cookie-service';
+
 import { AdminEffects } from './state/effects/admin.effects';
+import { HeadersInterceptor } from './shared/interceptors/headers.interceptor';
 
 @NgModule({
   declarations: [AppComponent, NotFoundComponent],
@@ -25,7 +28,9 @@ import { AdminEffects } from './state/effects/admin.effects';
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     EffectsModule.forRoot([AdminEffects]),
   ],
-  providers: [],
+  providers: [
+    CookieService,
+    { provide: HTTP_INTERCEPTORS, useClass: HeadersInterceptor, multi: true }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -8,7 +8,6 @@ const initialState: AdminState = {
 
 export const adminReducer = createReducer(
   initialState,
-
   on(adminActions.setAuthtoken, (_state, payload): AdminState => {
     return { authToken: payload.token };
   })
