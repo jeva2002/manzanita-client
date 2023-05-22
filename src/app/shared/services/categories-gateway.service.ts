@@ -36,6 +36,7 @@ export class CategoriesGatewayService {
   }
 
   public deleteCategory(id: string): Observable<string> {
+    //TODO debe avisarse que se eliminaran todos los productos bajo esta categoría
     return this.http.delete<string>(this.BaseURL + `/${id}`);
   }
 }
