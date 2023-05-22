@@ -1,16 +1,27 @@
-import { inject } from '@angular/core';
-import { Router } from '@angular/router';
-import { Store } from '@ngrx/store';
-import { selectAuthorizationToken } from 'src/app/state/selectors/admin.selector';
+import { Injectable } from '@angular/core';
+import {
+  ActivatedRouteSnapshot,
+  CanActivate,
+  RouterStateSnapshot,
+  UrlTree,
+} from '@angular/router';
+import { Observable } from 'rxjs';
+import { TokenService } from 'src/app/shared/services/token.service';
 
-export const authGuard = () => {
-  const store = inject(Store);
-  const router = inject(Router);
-  let hasToken = false;
-  store
-    .select(selectAuthorizationToken)
-    .forEach((token) => (hasToken = !!token));
+@Injectable({
+  providedIn: 'root',
+})
+export class AuthGuard implements CanActivate {
+  constructor(private tokenService: TokenService) {}
 
-  return hasToken ? true : router.navigate(['/cms']);
-};
-
+  canActivate(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ):
+    | Observable<boolean | UrlTree>
+    | Promise<boolean | UrlTree>
+    | boolean
+    | UrlTree {
+    return !!this.tokenService.getToken();
+  }
+}

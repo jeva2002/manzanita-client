@@ -8,14 +8,19 @@ export class TokenService {
   constructor(private cookieService: CookieService) {}
 
   saveToken(token: string): void {
-    this.cookieService.set('AuthToken', JSON.stringify(token), 3500);
+    this.cookieService.set('AuthToken', JSON.stringify(token), {
+      expires: 1 / 24,
+    });
   }
 
   getToken(): string {
     return this.cookieService.get('AuthToken');
   }
 
-  cleanToken(): void {
-    this.cookieService.delete('AuthToken');
+  clearToken(): void {
+    this.cookieService.delete(
+      'AuthToken',
+      '/',
+    );
   }
 }

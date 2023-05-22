@@ -1,33 +1,28 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Store } from '@ngrx/store';
-import { Subscription } from 'rxjs';
-import { adminActions } from 'src/app/state/actions/admin.actions';
-import { selectAuthorizationToken } from 'src/app/state/selectors/admin.selector';
+import { AuthenticationService } from 'src/app/shared/services/authentication.service';
+import { TokenService } from 'src/app/shared/services/token.service';
+import { take } from 'rxjs';
 
 @Component({
   selector: 'app-login-form',
   templateUrl: './login-form.component.html',
   styleUrls: ['./login-form.component.scss'],
 })
-export class LoginFormComponent implements OnInit, OnDestroy {
-  authorization$!: Subscription;
-
+export class LoginFormComponent implements OnInit {
   constructor(
     private builder: FormBuilder,
     // eslint-disable-next-line @ngrx/no-typed-global-store, @typescript-eslint/no-explicit-any
-    private store: Store<any>,
+    private tokenService: TokenService,
+    private authService: AuthenticationService,
     private router: Router
   ) {}
 
   ngOnInit(): void {
-    this.authorization$ = this.store
-      .select(selectAuthorizationToken)
-      // eslint-disable-next-line @ngrx/no-store-subscription
-      .subscribe((authToken) => {
-        if (authToken) this.router.navigate(['cms', 'dashboard']);
-      });
+    const authToken = this.tokenService.getToken();
+    console.log(authToken);
+    if (authToken) this.router.navigate(['cms', 'dashboard']);
   }
 
   loginForm = this.builder.nonNullable.group({
@@ -37,18 +32,16 @@ export class LoginFormComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     if (this.loginForm.valid) {
-      this.store.dispatch(
-        adminActions.login({
-          credentials: {
-            email: this.loginForm.controls.email.value,
-            password: this.loginForm.controls.password.value,
-          },
+      this.authService
+        .login({
+          email: this.loginForm.controls.email.value,
+          password: this.loginForm.controls.password.value,
         })
-      );
+        .pipe(take(1))
+        .subscribe((authToken) => {
+          this.tokenService.saveToken(authToken.token);
+          this.router.navigate(['cms', 'dashboard']);
+        });
     }
-  }
-
-  ngOnDestroy(): void {
-    this.authorization$.unsubscribe();
   }
 }

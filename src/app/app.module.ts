@@ -14,7 +14,6 @@ import { ROOT_REDUCERS } from './state/app.state';
 
 import { CookieService } from 'ngx-cookie-service';
 
-import { AdminEffects } from './state/effects/admin.effects';
 import { HeadersInterceptor } from './shared/interceptors/headers.interceptor';
 
 @NgModule({
@@ -26,11 +25,12 @@ import { HeadersInterceptor } from './shared/interceptors/headers.interceptor';
     StoreModule.forRoot(ROOT_REDUCERS),
     BrowserAnimationsModule,
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
-    EffectsModule.forRoot([AdminEffects]),
+    EffectsModule.forRoot(),
   ],
   providers: [
     CookieService,
-    { provide: HTTP_INTERCEPTORS, useClass: HeadersInterceptor, multi: true }],
+    { provide: HTTP_INTERCEPTORS, useClass: HeadersInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
